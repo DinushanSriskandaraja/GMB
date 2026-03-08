@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@curtainmaster.com",
+      "password": "admin",
+      "name": "Admin User",
+      "role": "admin"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD001",
+      "userId": "1",
+      "status": "In Progress",
+      "items": "Silk Curtains (2x)",
+      "total": 250,
+      "date": "2026-03-01"
+    },
+    {
+      "id": "ORD002",
+      "userId": "1",
+      "status": "Shipped",
+      "items": "Velvet Drapes (1x)",
+      "total": 180,
+      "date": "2026-03-05"
+    }
+  ],
+  "contacts": []
+}
