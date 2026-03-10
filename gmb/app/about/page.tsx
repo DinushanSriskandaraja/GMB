@@ -7,7 +7,7 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import AboutProcess from '@/components/AboutProcess';
 import AboutTeam from '@/components/AboutTeam';
 import AboutStats from '@/components/AboutStats';
-import ServiceAreas from '@/components/ServiceAreas';
+
 import QuoteCTA from '@/components/QuoteCTA';
 import Footer from '@/components/Footer';
 
@@ -23,7 +23,7 @@ export default function AboutPage() {
       <AboutProcess />
       <AboutTeam />
       <AboutStats />
-      <ServiceAreas />
+
       <QuoteCTA />
       <Footer />
     </main>

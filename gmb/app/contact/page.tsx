@@ -5,7 +5,7 @@ import ContactHero from '@/components/ContactHero';
 import ContactInfo from '@/components/ContactInfo';
 import ContactForm from '@/components/ContactForm';
 import ContactMap from '@/components/ContactMap';
-import ServiceAreas from '@/components/ServiceAreas';
+
 import QuoteCTA from '@/components/QuoteCTA';
 import Footer from '@/components/Footer';
 
@@ -17,7 +17,7 @@ export default function ContactPage() {
       <ContactInfo />
       <ContactForm />
       <ContactMap />
-      <ServiceAreas />
+
       <QuoteCTA />
       <Footer />
     </main>

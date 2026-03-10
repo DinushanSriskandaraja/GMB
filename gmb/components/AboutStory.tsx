@@ -77,7 +77,7 @@ const AboutStory = () => {
                     </p>
                     
                     {/* Decorative dot on the line (Desktop only) */}
-                    <div className={`absolute top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border-4 border-primary shadow-2xl hidden lg:block z-20 transition-transform hover:scale-125
+                    <div className={`absolute top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-primary shadow-2xl hidden lg:block z-20 transition-transform hover:scale-125
                       ${index % 2 === 0 ? '-left-[116px]' : '-right-[116px]'}`} />
                   </div>
                 </div>

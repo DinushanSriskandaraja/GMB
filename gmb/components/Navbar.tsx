@@ -20,19 +20,18 @@ const Navbar = () => {
               <Link href="/" className="text-slate-300 hover:text-primary transition-colors font-medium">Home</Link>
               <Link href="/about" className="text-slate-300 hover:text-primary transition-colors font-medium">About</Link>
               <Link href="/contact" className="text-slate-300 hover:text-primary transition-colors font-medium">Contact</Link>
-              <button 
-                onClick={openTrackModal}
-                className="text-slate-300 hover:text-primary transition-colors font-medium text-base px-0 bg-transparent border-none cursor-pointer"
-              >
-                Track Order
-              </button>
             </div>
           </div>
-          <div className="flex items-center space-x-4">
-            <Link href="/auth/login" className="text-slate-300 hover:text-primary transition-colors font-medium">Login</Link>
-            <Link href="/auth/register" className="bg-primary text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition-opacity">
-              Register
-            </Link>
+          <div className="flex items-center">
+            <button
+              onClick={openTrackModal}
+              className="bg-primary text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition-opacity flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              Track Order
+            </button>
           </div>
         </div>
       </div>

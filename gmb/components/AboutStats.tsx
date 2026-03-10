@@ -7,7 +7,7 @@ const stats = [
 
 const AboutStats = () => {
   return (
-    <section className="py-24 bg-primary text-white relative overflow-hidden">
+    <section className="py-24 bg-emerald-900/40 text-white relative overflow-hidden border-y border-primary/20 backdrop-blur-sm">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-96 h-96 bg-black/10 rounded-full blur-3xl" />

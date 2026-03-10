@@ -4,8 +4,7 @@ const AboutMission = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div 
-            className="premium-card p-12 text-white relative overflow-hidden rounded-[3rem] shadow-2xl shadow-primary/20"
-            style={{ backgroundColor: 'var(--primary)' }}
+            className="premium-card glassmorphism p-12 text-white relative overflow-hidden rounded-[3rem] shadow-2xl shadow-primary/20 border border-primary/30 bg-emerald-900/40"
           >
             {/* Decorative background circle */}
             <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
