@@ -1,28 +1,30 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import Stats from '@/components/Stats';
 import ProductCategories from '@/components/ProductCategories';
-import Gallery from '@/components/Gallery';
+import RecentWorks from '@/components/RecentWorks';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import Testimonials from '@/components/Testimonials';
-
+import FAQ from '@/components/FAQ';
 import BlogPreview from '@/components/BlogPreview';
 import QuoteCTA from '@/components/QuoteCTA';
 import Footer from '@/components/Footer';
+import ScrollReveal from '@/components/ScrollReveal';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-[70vh]">
       <Navbar />
       <Hero />
-      <ProductCategories />
-      <Gallery />
-      <WhyChooseUs />
-      <Testimonials />
-
-      <BlogPreview />
-      <QuoteCTA />
+      <ScrollReveal><Stats /></ScrollReveal>
+      <ScrollReveal><ProductCategories /></ScrollReveal>
+      <ScrollReveal><RecentWorks /></ScrollReveal>
+      <ScrollReveal><WhyChooseUs /></ScrollReveal>
+      <ScrollReveal><Testimonials /></ScrollReveal>
+      <ScrollReveal><FAQ /></ScrollReveal>
+      <ScrollReveal><BlogPreview /></ScrollReveal>
+      <ScrollReveal><QuoteCTA /></ScrollReveal>
       <Footer />
     </main>
   );
 }
-

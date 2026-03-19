@@ -33,11 +33,11 @@ const steps = [
 
 const AboutProcess = () => {
   return (
-    <section className="py-24 bg-slate-900/20">
+    <section className="py-12 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold mb-4">Our <span className="gradient-text">Seamless Process</span></h2>
-          <p className="text-slate-300 max-w-2xl mx-auto text-lg">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold mb-4 text-slate-800">Our <span className="gradient-text">Seamless Process</span></h2>
+          <p className="text-slate-500 max-w-2xl mx-auto text-lg">
             From the initial idea to the final installation, we ensure a smooth and enjoyable experience.
           </p>
         </div>
@@ -45,12 +45,12 @@ const AboutProcess = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {steps.map((step, index) => (
             <div key={index} className="premium-card p-10 glassmorphism relative group hover:bg-transparent transition-all duration-500">
-              <span className="text-6xl font-black text-primary/10 absolute top-6 right-6 group-hover:text-primary/20 transition-colors">
+              <span className="text-4xl font-black text-primary/10 absolute top-6 right-6 group-hover:text-primary/20 transition-colors">
                 {step.number}
               </span>
               <div className="relative z-10">
                 <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">{step.title}</h3>
-                <p className="text-slate-400 leading-relaxed">
+                <p className="text-slate-500 leading-relaxed">
                   {step.description}
                 </p>
               </div>

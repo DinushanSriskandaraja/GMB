@@ -7,24 +7,24 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import AboutProcess from '@/components/AboutProcess';
 import AboutTeam from '@/components/AboutTeam';
 import AboutStats from '@/components/AboutStats';
+import ScrollReveal from '@/components/ScrollReveal';
 
 import QuoteCTA from '@/components/QuoteCTA';
 import Footer from '@/components/Footer';
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-[70vh]">
       <Navbar />
       <AboutHero />
-      <AboutIntro />
-      <AboutStory />
-      <AboutMission />
-      <WhyChooseUs />
-      <AboutProcess />
-      <AboutTeam />
-      <AboutStats />
-
-      <QuoteCTA />
+      <ScrollReveal><AboutIntro /></ScrollReveal>
+      <ScrollReveal><AboutStory /></ScrollReveal>
+      <ScrollReveal><AboutMission /></ScrollReveal>
+      <ScrollReveal><WhyChooseUs /></ScrollReveal>
+      <ScrollReveal><AboutProcess /></ScrollReveal>
+      <ScrollReveal><AboutTeam /></ScrollReveal>
+      <ScrollReveal><AboutStats /></ScrollReveal>
+      <ScrollReveal><QuoteCTA /></ScrollReveal>
       <Footer />
     </main>
   );

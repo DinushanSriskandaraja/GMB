@@ -39,27 +39,27 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-24 bg-slate-900/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
-            <h2 className="text-4xl font-bold">Why Choose <span className="gradient-text">CurtainMaster?</span></h2>
-            <p className="text-lg text-slate-300 leading-relaxed">
+    <section className="py-16 bg-transparent overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-2 border-primary/30 rounded-xl p-8 bg-white/60 backdrop-blur-sm shadow-lg">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold text-slate-800">Why Choose <span className="gradient-text">GMB?</span></h2>
+            <p className="text-lg text-slate-600 leading-relaxed">
               We don't just sell curtains; we provide complete window solutions that enhance the beauty and energy efficiency of your home.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-12">
               {features.map((feature, index) => (
                 <div key={index} className="space-y-4">
-                  <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center">
+                  <div className="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-bold">{feature.title}</h3>
-                  <p className="text-slate-400">{feature.description}</p>
+                  <h3 className="text-xl font-bold text-slate-800">{feature.title}</h3>
+                  <p className="text-slate-500">{feature.description}</p>
                 </div>
               ))}
             </div>
           </div>
-          <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl premium-card">
+          <div className="relative h-[450px] rounded-xl overflow-hidden shadow-2xl premium-card">
             <img 
               src="/images/curtain2.png" 
               alt="Quality Craftsmanship" 

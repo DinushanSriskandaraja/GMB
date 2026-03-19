@@ -5,26 +5,115 @@
       "email": "admin@curtainmaster.com",
       "password": "admin",
       "name": "Admin User",
-      "role": "admin"
+      "role": "admin",
+      "mobile": "1234567890"
     }
   ],
   "orders": [
     {
       "id": "ORD001",
       "userId": "1",
+      "customer": "John Doe",
       "status": "In Progress",
       "items": "Silk Curtains (2x)",
       "total": 250,
-      "date": "2026-03-01"
+      "date": "2026-03-01",
+      "mobile": "1234567890"
     },
     {
       "id": "ORD002",
       "userId": "1",
+      "customer": "Jane Smith",
       "status": "Shipped",
       "items": "Velvet Drapes (1x)",
       "total": 180,
-      "date": "2026-03-05"
+      "date": "2026-03-05",
+      "mobile": "0987654321"
     }
   ],
-  "contacts": []
+  "contacts": [],
+  "gallery": [
+    { "id": "s24", "title": "Royal Balcony Sheer Pro", "category": "Sheers", "description": "Our latest luxurious balcony treatment, blending privacy with high-end silk textures.", "image": "/images/curtain8.png" },
+    { "id": "s23", "title": "Smart Kitchen Blind Plus", "category": "Motorized Blinds", "description": "Freshly engineered automated solution for the modern kitchen environment.", "image": "/images/curtain6.png" },
+    { "id": "s22", "title": "Classic Dining Valance II", "category": "Curtains", "description": "A recent addition to our dining collection, reimagining classic elegance for 2026.", "image": "/images/curtain2.png" },
+    { "id": "s21", "title": "Sheer Office Glide Pro", "category": "Sheers", "description": "The newest iteration of our office collection, designed for diffused lighting.", "image": "/images/curtain4.png" },
+    { "id": "s20", "title": "Luxury Motorized Velvet Elite", "category": "Motorized Blinds", "description": "Our latest flagship motorized unit, now with enhanced velvet dampening.", "image": "/images/curtain5.png" },
+    { "id": "s19", "title": "Morning Sun Sheer Pro", "category": "Sheers", "description": "A fresh take on sunrise filtration, newly added to the Spring 2026 line.", "image": "/images/curtain8.png" }
+  ],
+  "categories": [
+    "Living Room",
+    "Bedroom",
+    "Office",
+    "Balcony",
+    "Kitchen",
+    "Dining Area"
+  ],
+  "categoryMetadata": {
+    "Curtains": "Luxurious, hand-tailored fabrics that offer ultimate light control and architectural presence. Available in hundreds of textures and blackout levels.",
+    "Blinds": "Precision-engineered window controls that balance privacy with adjustable natural light. A modern solution for any window size.",
+    "Sheers": "Soft, ethereal layers that diffuse sunlight into a golden glow while maintaining daytime privacy and outside views.",
+    "Motorized Blinds": "The pinnacle of convenience and safety. Smart-home integrated systems for effortless light management at single touch."
+  },
+  "productTabs": [
+    "Curtains",
+    "Blinds",
+    "Sheers",
+    "Motorized Blinds"
+  ],
+  "productStyles": [
+    "Minimalist Sheer",
+    "Royal Velvet",
+    "Morning Breeze",
+    "Modern Classic"
+  ],
+  "products": [
+    { "id": "c1", "name": "Luxe Sheer White", "category": "Sheers", "style": "Minimalist Sheer", "room": "Living Room", "priceFrom": 85, "image": "/images/curtain4.png" },
+    { "id": "c2", "name": "Midnight Velvet", "category": "Curtains", "style": "Royal Velvet", "room": "Bedroom", "priceFrom": 150, "image": "/images/curtain5.png" },
+    { "id": "c3", "name": "Organic Linen", "category": "Curtains", "style": "Morning Breeze", "room": "Balcony", "priceFrom": 110, "image": "/images/curtain8.png" },
+    { "id": "c4", "name": "Classic Roman Blind", "category": "Blinds", "style": "Modern Classic", "room": "Dining Area", "priceFrom": 95, "image": "/images/curtain6.png" },
+    { "id": "c5", "name": "Ethereal Voile", "category": "Sheers", "style": "Minimalist Sheer", "room": "Bedroom", "priceFrom": 85, "image": "/images/curtain4.png" },
+    { "id": "c6", "name": "Emerald Velvet", "category": "Curtains", "style": "Royal Velvet", "room": "Living Room", "priceFrom": 160, "image": "/images/curtain5.png" },
+    { "id": "c7", "name": "Smart-Glide Blackout", "category": "Motorized Blinds", "style": "Modern Classic", "room": "Office", "priceFrom": 299, "image": "/images/curtain7.png" },
+    { "id": "c8", "name": "Coastal Sheer", "category": "Sheers", "style": "Morning Breeze", "room": "Kitchen", "priceFrom": 75, "image": "/images/curtain1.png" },
+    { "id": "c9", "name": "Morning Mist Roller", "category": "Blinds", "style": "Morning Breeze", "room": "Kitchen", "priceFrom": 90, "image": "/images/curtain2.png" },
+    { "id": "c10", "name": "Velvet Night Shadow", "category": "Curtains", "style": "Royal Velvet", "room": "Office", "priceFrom": 175, "image": "/images/curtain3.png" },
+    { "id": "c11", "name": "Minimalist Duo-Shade", "category": "Blinds", "style": "Minimalist Sheer", "room": "Living Room", "priceFrom": 120, "image": "/images/curtain6.png" },
+    { "id": "c12", "name": "Automatic Solar Guard", "category": "Motorized Blinds", "style": "Modern Classic", "room": "Balcony", "priceFrom": 350, "image": "/images/curtain7.png" },
+    { "id": "c13", "name": "Classic Pleated Drape", "category": "Curtains", "style": "Modern Classic", "room": "Dining Area", "priceFrom": 130, "image": "/images/curtain2.png" },
+    { "id": "c14", "name": "Breeze Venetian", "category": "Blinds", "style": "Morning Breeze", "room": "Bedroom", "priceFrom": 105, "image": "/images/curtain3.png" },
+    { "id": "c15", "name": "Cloud Sheer Panel", "category": "Sheers", "style": "Minimalist Sheer", "room": "Office", "priceFrom": 95, "image": "/images/curtain4.png" },
+    { "id": "c16", "name": "Royal Satin Blind", "category": "Blinds", "style": "Royal Velvet", "room": "Dining Area", "priceFrom": 140, "image": "/images/curtain1.png" },
+    { "id": "c17", "name": "Smart Voile Track", "category": "Motorized Blinds", "style": "Minimalist Sheer", "room": "Living Room", "priceFrom": 450, "image": "/images/curtain7.png" },
+    { "id": "c18", "name": "Modern Slat Blind", "category": "Blinds", "style": "Modern Classic", "room": "Kitchen", "priceFrom": 115, "image": "/images/curtain6.png" },
+    { "id": "c19", "name": "Morning Sun Sheer", "category": "Sheers", "style": "Morning Breeze", "room": "Balcony", "priceFrom": 80, "image": "/images/curtain8.png" },
+    { "id": "c20", "name": "Luxury Motorized Velvet", "category": "Motorized Blinds", "style": "Royal Velvet", "room": "Bedroom", "priceFrom": 550, "image": "/images/curtain5.png" },
+    { "id": "c21", "name": "Sheer Office Glide", "category": "Sheers", "style": "Minimalist Sheer", "room": "Office", "priceFrom": 110, "image": "/images/curtain4.png" },
+    { "id": "c22", "name": "Classic Dining Valance", "category": "Curtains", "style": "Modern Classic", "room": "Dining Area", "priceFrom": 190, "image": "/images/curtain2.png" },
+    { "id": "c23", "name": "Smart Kitchen Blind", "category": "Motorized Blinds", "style": "Morning Breeze", "room": "Kitchen", "priceFrom": 280, "image": "/images/curtain6.png" },
+    { "id": "c24", "name": "Royal Balcony Sheer", "category": "Sheers", "style": "Royal Velvet", "room": "Balcony", "priceFrom": 135, "image": "/images/curtain8.png" },
+    { "id": "s1", "name": "Luxe Sheer White Signature", "category": "Sheers", "style": "Minimalist Sheer", "room": "Living Room", "priceFrom": 95, "image": "/images/curtain4.png" },
+    { "id": "s2", "name": "Midnight Velvet Elite", "category": "Curtains", "style": "Royal Velvet", "room": "Bedroom", "priceFrom": 180, "image": "/images/curtain5.png" },
+    { "id": "s3", "name": "Organic Linen Pro", "category": "Curtains", "style": "Morning Breeze", "room": "Balcony", "priceFrom": 125, "image": "/images/curtain8.png" },
+    { "id": "s4", "name": "Classic Roman Blind Plus", "category": "Blinds", "style": "Modern Classic", "room": "Dining Area", "priceFrom": 110, "image": "/images/curtain6.png" },
+    { "id": "s5", "name": "Ethereal Voile Soft", "category": "Sheers", "style": "Minimalist Sheer", "room": "Bedroom", "priceFrom": 95, "image": "/images/curtain4.png" },
+    { "id": "s6", "name": "Emerald Velvet Grand", "category": "Curtains", "style": "Royal Velvet", "room": "Living Room", "priceFrom": 195, "image": "/images/curtain5.png" },
+    { "id": "s7", "name": "Smart-Glide Blackout Pro", "category": "Motorized Blinds", "style": "Modern Classic", "room": "Office", "priceFrom": 350, "image": "/images/curtain7.png" },
+    { "id": "s8", "name": "Coastal Sheer Mist", "category": "Sheers", "style": "Morning Breeze", "room": "Kitchen", "priceFrom": 85, "image": "/images/curtain1.png" },
+    { "id": "s9", "name": "Morning Mist Roller II", "category": "Blinds", "style": "Morning Breeze", "room": "Kitchen", "priceFrom": 105, "image": "/images/curtain2.png" },
+    { "id": "s10", "name": "Velvet Night Shadow Pro", "category": "Curtains", "style": "Royal Velvet", "room": "Office", "priceFrom": 210, "image": "/images/curtain3.png" },
+    { "id": "s11", "name": "Minimalist Duo-Shade Elite", "category": "Blinds", "style": "Minimalist Sheer", "room": "Living Room", "priceFrom": 145, "image": "/images/curtain6.png" },
+    { "id": "s12", "name": "Automatic Solar Guard II", "category": "Motorized Blinds", "style": "Modern Classic", "room": "Balcony", "priceFrom": 399, "image": "/images/curtain7.png" },
+    { "id": "s13", "name": "Classic Pleated Drape Elite", "category": "Curtains", "style": "Modern Classic", "room": "Dining Area", "priceFrom": 160, "image": "/images/curtain2.png" },
+    { "id": "s14", "name": "Breeze Venetian Pro", "category": "Blinds", "style": "Morning Breeze", "room": "Bedroom", "priceFrom": 125, "image": "/images/curtain3.png" },
+    { "id": "s15", "name": "Cloud Sheer Panel Grand", "category": "Sheers", "style": "Minimalist Sheer", "room": "Office", "priceFrom": 115, "image": "/images/curtain4.png" },
+    { "id": "s16", "name": "Royal Satin Blind Plus", "category": "Blinds", "style": "Royal Velvet", "room": "Dining Area", "priceFrom": 165, "image": "/images/curtain1.png" },
+    { "id": "s17", "name": "Smart Voile Track II", "category": "Motorized Blinds", "style": "Minimalist Sheer", "room": "Living Room", "priceFrom": 499, "image": "/images/curtain7.png" },
+    { "id": "s18", "name": "Modern Slat Blind Elite", "category": "Blinds", "style": "Modern Classic", "room": "Kitchen", "priceFrom": 135, "image": "/images/curtain6.png" },
+    { "id": "s19", "name": "Morning Sun Sheer Pro", "category": "Sheers", "style": "Morning Breeze", "room": "Balcony", "priceFrom": 95, "image": "/images/curtain8.png" },
+    { "id": "s20", "name": "Luxury Motorized Velvet Elite", "category": "Motorized Blinds", "style": "Royal Velvet", "room": "Bedroom", "priceFrom": 650, "image": "/images/curtain5.png" },
+    { "id": "s21", "name": "Sheer Office Glide Pro", "category": "Sheers", "style": "Minimalist Sheer", "room": "Office", "priceFrom": 130, "image": "/images/curtain4.png" },
+    { "id": "s22", "name": "Classic Dining Valance II", "category": "Curtains", "style": "Modern Classic", "room": "Dining Area", "priceFrom": 220, "image": "/images/curtain2.png" },
+    { "id": "s23", "name": "Smart Kitchen Blind Plus", "category": "Motorized Blinds", "style": "Morning Breeze", "room": "Kitchen", "priceFrom": 320, "image": "/images/curtain6.png" },
+    { "id": "s24", "name": "Royal Balcony Sheer Pro", "category": "Sheers", "style": "Royal Velvet", "room": "Balcony", "priceFrom": 155, "image": "/images/curtain8.png" }
+  ]
 }

@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 
 const timeline = [
@@ -34,56 +37,113 @@ const timeline = [
 ];
 
 const AboutStory = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <section className="py-24 bg-slate-900/20 overflow-hidden">
+    <section className="py-12 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-24">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Our <span className="gradient-text">Incredible Journey</span></h2>
-          <p className="text-slate-300 max-w-2xl mx-auto text-lg leading-relaxed">
-            From a humble workshop to a luxury brand, our story is one of passion, dedication, and the pursuit of perfection.
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-serif font-medium text-slate-800">
+            Our <span className="text-primary">Journey</span>
+          </h2>
+          <p className="mt-4 text-slate-500 max-w-2xl mx-auto text-lg">
+            A compact look at our evolution from a local workshop to industry leaders.
           </p>
         </div>
 
         <div className="relative">
-          {/* Central Vertical Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-primary/20 to-transparent hidden lg:block rounded-full" />
+          {/* Year Navigation */}
+          <div className="flex justify-between items-center mb-12 relative max-w-4xl mx-auto">
+            {/* Progress line background */}
+            <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 -translate-y-1/2" />
+            
+            {/* Active progress line */}
+            <div 
+              className="absolute top-1/2 left-0 h-0.5 bg-primary -translate-y-1/2 transition-all duration-500 ease-in-out" 
+              style={{ width: `${(activeIndex / (timeline.length - 1)) * 100}%` }}
+            />
 
-          <div className="space-y-24 lg:space-y-32">
             {timeline.map((item, index) => (
-              <div key={index} className={`relative flex flex-col lg:flex-row items-center gap-12 lg:gap-24 ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-                
-                {/* Image Side */}
-                <div className="w-full lg:w-1/2">
-                  <div className="relative h-80 md:h-[400px] rounded-[3rem] overflow-hidden shadow-2xl premium-card group">
+              <button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className="relative z-10 flex flex-col items-center group"
+              >
+                <div 
+                  className={`w-12 h-12 rounded-full flex items-center justify-center border-4 transition-all duration-300 ${
+                    index <= activeIndex 
+                      ? 'bg-primary border-primary text-white shadow-lg shadow-primary/20' 
+                      : 'bg-white border-slate-200 text-slate-400'
+                  } ${index === activeIndex ? 'scale-125' : 'hover:scale-110'}`}
+                >
+                  <span className="text-xs font-bold">{item.year}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Active Content Card */}
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-white rounded-xl shadow-2xl overflow-hidden border border-slate-100 flex flex-col md:flex-row min-h-[450px]">
+              {/* Image Section */}
+              <div className="w-full md:w-1/2 relative h-64 md:h-auto overflow-hidden">
+                {timeline.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${
+                      index === activeIndex ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-12 scale-110'
+                    }`}
+                  >
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors" />
-                    <div className="absolute top-6 left-6 bg-transparent/90 backdrop-blur-md px-6 py-2 rounded-2xl shadow-xl">
-                      <span className="text-2xl font-black text-primary">{item.year}</span>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
                   </div>
-                </div>
+                ))}
+              </div>
 
-                {/* Content Side */}
-                <div className="w-full lg:w-1/2 space-y-6">
-                  <div className={`relative ${index % 2 === 0 ? 'text-left' : 'lg:text-right'}`}>
-                    <h3 className="text-3xl font-bold mb-4">{item.title}</h3>
-                    <p className="text-xl text-slate-300 leading-relaxed">
-                      {item.description}
+              {/* Text Section */}
+              <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center bg-slate-50/30">
+                {timeline.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`transition-all duration-500 ease-in-out ${
+                      index === activeIndex ? 'block opacity-100 translate-y-0' : 'hidden opacity-0 translate-y-8'
+                    }`}
+                  >
+                    <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">
+                      Chapter {index + 1}: {item.year}
+                    </span>
+                    <h3 className="text-3xl md:text-3xl font-serif font-medium text-slate-900 mb-6">
+                      {item.title}
+                    </h3>
+                    <p className="text-lg text-slate-600 leading-relaxed italic">
+                      "{item.description}"
                     </p>
                     
-                    {/* Decorative dot on the line (Desktop only) */}
-                    <div className={`absolute top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-primary shadow-2xl hidden lg:block z-20 transition-transform hover:scale-125
-                      ${index % 2 === 0 ? '-left-[116px]' : '-right-[116px]'}`} />
+                    <div className="mt-8 flex gap-4">
+                      <button 
+                        disabled={activeIndex === 0}
+                        onClick={() => setActiveIndex(prev => prev - 1)}
+                        className="p-3 rounded-full border border-slate-200 text-slate-400 hover:border-primary hover:text-primary transition-all disabled:opacity-30 disabled:hover:border-slate-200 disabled:hover:text-slate-400"
+                      >
+                        <svg className="w-6 h-6 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/></svg>
+                      </button>
+                      <button 
+                        disabled={activeIndex === timeline.length - 1}
+                        onClick={() => setActiveIndex(prev => prev + 1)}
+                        className="p-3 rounded-full bg-primary text-white shadow-lg shadow-primary/20 hover:scale-110 transition-all disabled:opacity-30 disabled:scale-100"
+                      >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/></svg>
+                      </button>
+                    </div>
                   </div>
-                </div>
-
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>

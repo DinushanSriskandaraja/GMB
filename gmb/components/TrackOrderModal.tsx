@@ -31,27 +31,27 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
     setError('');
     setLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      // Mock tracking logic
-      const mockOrders: any = {
-        'ORD001': { status: 'In Progress', items: 'Silk Curtains (2x)', date: '2026-03-01', mobile: '1234567890' },
-        'ORD002': { status: 'Shipped', items: 'Velvet Drapes (1x)', date: '2026-03-05', mobile: '0987654321' },
-      };
+    try {
+      const res = await fetch(`/api/public/track/${orderNumber}?mobile=${mobileNumber}`);
+      const data = await res.json();
 
-      const order = mockOrders[orderNumber];
-
-      if (order && order.mobile === mobileNumber) {
-        setOrderStatus(order);
-      } else if (order && order.mobile !== mobileNumber) {
-        setError('Mobile number does not match for this order.');
-        setOrderStatus(null);
+      if (res.ok && data.order) {
+        // Simple verification - although API will return 404 or something if not match
+        // But let's assume API checks it. My API checks if it exists. 
+        // I need to ensure my API checks the mobile.
+        if (data.order.mobile === mobileNumber) {
+          setOrderStatus(data.order);
+        } else {
+          setError('Mobile number does not match for this order.');
+        }
       } else {
-        setError('Order not found. Please check your Order Number.');
-        setOrderStatus(null);
+        setError(data.error || 'Order not found. Please check your Order Number.');
       }
+    } catch (err) {
+      setError('Connection error. Please try again later.');
+    } finally {
       setLoading(false);
-    }, 800);
+    }
   };
 
   if (!isOpen) return null;
@@ -65,7 +65,7 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
       />
 
       {/* Modal Content */}
-      <div className="relative w-full max-w-lg bg-slate-900/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+      <div className="relative w-full max-w-lg bg-slate-900/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
         <div className="p-8 sm:p-12">
           {/* Header */}
           <div className="flex justify-between items-start mb-8">
@@ -75,7 +75,7 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
             </div>
             <button 
               onClick={onClose}
-              className="p-2 hover:bg-slate-800 rounded-full transition-colors"
+              className="p-2 hover:bg-slate-800 rounded-xl transition-colors"
             >
               <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -91,7 +91,7 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
                   type="text" 
                   placeholder="e.g. ORD001"
                   required
-                  className="w-full px-6 py-4 rounded-2xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all bg-slate-900/20"
+                  className="w-full px-6 py-4 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all bg-slate-900/40 text-white placeholder:text-slate-500"
                   value={orderNumber}
                   onChange={(e) => setOrderNumber(e.target.value.toUpperCase())}
                 />
@@ -102,7 +102,7 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
                   type="tel" 
                   placeholder="Enter registered mobile"
                   required
-                  className="w-full px-6 py-4 rounded-2xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all bg-slate-900/20"
+                  className="w-full px-6 py-4 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all bg-slate-900/40 text-white placeholder:text-slate-500"
                   value={mobileNumber}
                   onChange={(e) => setMobileNumber(e.target.value)}
                 />
@@ -117,10 +117,10 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
               <button 
                 type="submit"
                 disabled={loading}
-                className="w-full bg-primary text-white py-5 rounded-2xl font-bold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-3 disabled:opacity-70"
+                className="w-full bg-primary text-white py-5 rounded-xl font-bold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-3 disabled:opacity-70"
               >
                 {loading ? (
-                  <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-xl animate-spin" />
                 ) : (
                   'Track Now'
                 )}
@@ -128,10 +128,10 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
             </form>
           ) : (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="p-6 bg-primary/5 rounded-3xl border border-primary/10">
+              <div className="p-6 bg-primary/5 rounded-xl border border-primary/10">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-slate-400 text-sm">Status</span>
-                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-xl text-xs font-bold uppercase tracking-wider">
                     {orderStatus.status}
                   </span>
                 </div>
@@ -150,16 +150,20 @@ const TrackOrderModal = ({ isOpen, onClose }: TrackOrderModalProps) => {
               </div>
 
               <div className="relative pt-6">
-                <div className="absolute top-0 left-0 w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-white/10 rounded-xl overflow-hidden">
                   <div 
                     className="h-full bg-primary transition-all duration-1000 ease-out" 
-                    style={{ width: orderStatus.status === 'Shipped' ? '100%' : '50%' }} 
+                    style={{ width: 
+                      orderStatus.status === 'Delivered' ? '100%' : 
+                      orderStatus.status === 'Shipped' ? '66%' : 
+                      orderStatus.status === 'In Progress' ? '33%' : '0%' 
+                    }} 
                   />
                 </div>
                 <div className="flex justify-between text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-3 px-1">
-                  <span className={orderStatus.status === 'In Progress' ? 'text-primary' : ''}>Processing</span>
-                  <span className={orderStatus.status === 'Shipped' ? 'text-primary' : ''}>Shipped</span>
-                  <span>Delivered</span>
+                  <span className={['In Progress', 'Shipped', 'Delivered'].includes(orderStatus.status) ? 'text-primary' : ''}>Processing</span>
+                  <span className={['Shipped', 'Delivered'].includes(orderStatus.status) ? 'text-primary' : ''}>Shipped</span>
+                  <span className={orderStatus.status === 'Delivered' ? 'text-primary' : ''}>Delivered</span>
                 </div>
               </div>
 

@@ -20,7 +20,7 @@ export default function RegisterPage() {
               <input 
                 type="text" 
                 placeholder="John Doe"
-                className="w-full px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="w-full px-4 py-2 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
             </div>
             <div>
@@ -28,7 +28,7 @@ export default function RegisterPage() {
               <input 
                 type="email" 
                 placeholder="john@example.com"
-                className="w-full px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="w-full px-4 py-2 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
             </div>
             <div>
@@ -36,7 +36,7 @@ export default function RegisterPage() {
               <input 
                 type="password" 
                 placeholder="••••••••"
-                className="w-full px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="w-full px-4 py-2 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
             </div>
             <button 
