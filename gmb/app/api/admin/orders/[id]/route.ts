@@ -4,10 +4,10 @@ import path from 'path';
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const dbPath = path.join(process.cwd(), 'lib', 'db.json');
     const dbData = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
     
