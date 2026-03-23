@@ -12,7 +12,8 @@ export async function GET() {
       categoryMetadata: dbData.categoryMetadata || {},
       styles: dbData.productStyles || [],
       rooms: dbData.categories || [],
-      products: dbData.products || []
+      products: dbData.products || [],
+      gallery: dbData.gallery || []
     });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 });

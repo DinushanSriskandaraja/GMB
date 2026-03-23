@@ -35,6 +35,11 @@ function GalleryContent() {
   );
 
   const filteredItems = galleryItems.filter(item => {
+    // Make image visible if no category and no location are there
+    if (!item.category && !item.style && !item.location && !item.room) {
+      return true;
+    }
+
     // Determine category matching logic
     const categoryName = item.category || 'Unknown';
     const styleName = item.style || 'Unknown';
