@@ -107,7 +107,7 @@ const Hero = () => {
           </div>
 
           <div className="lg:ml-auto w-full max-w-[380px] mx-auto lg:mx-0">
-            <div className="premium-card-dark bg-secondary p-6 glassmorphism-dark border-white/10">
+            <div className="premium-card-dark bg-secondary p-6 glassmorphism-dark border-white/10 rounded-xl">
               <h2 className="text-xl font-bold mb-5 text-white">Get a Free Consultation</h2>
               <form onSubmit={handleSubmit} className="space-y-3">
                 <div>

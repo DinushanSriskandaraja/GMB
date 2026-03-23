@@ -30,6 +30,7 @@ function ProductsContent() {
    const [activeRoom, setActiveRoom] = useState('All');
    const [searchQuery, setSearchQuery] = useState('');
    const [isRoomDropdownOpen, setIsRoomDropdownOpen] = useState(false);
+   const [isStyleDropdownOpen, setIsStyleDropdownOpen] = useState(false);
    const [loading, setLoading] = useState(true);
    const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
    const [isSecondaryNavVisible, setIsSecondaryNavVisible] = useState(false);
@@ -137,65 +138,7 @@ function ProductsContent() {
                <section className="max-w-[1600px] mx-auto px-6 py-2 md:px-8 md:py-4">
 
                   {/* STYLE FILTERS AS CARDS (Matching ProductCategories.tsx) */}
-                  {activeStyle === 'All' && activeTab ? (
-                     <div className="max-w-[1400px] mx-auto mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-4 h-auto lg:h-[700px]">
-
-                           {/* LEFT: Large Hero Card — First Style */}
-                           {data.styles[0] && (() => {
-                              const style = data.styles[0];
-                              const styleImage = data.products.find(p => p.style === style)?.image || '/images/curtain1.png';
-                              return (
-                                 <div
-                                    key={style}
-                                    className="group relative overflow-hidden rounded-3xl cursor-pointer h-[400px] lg:h-full"
-                                    onClick={() => { setActiveStyle(style); setActiveRoom('All'); window.scrollTo({ top: 300, behavior: 'smooth' }); }}
-                                 >
-                                    <Image src={styleImage} alt={style} fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-105" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                                    <div className="absolute bottom-0 left-0 p-8 md:p-10">
-                                       <span className="inline-block text-[9px] font-bold uppercase tracking-[0.4em] text-white/60 mb-3">Signature Style</span>
-                                       <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">{style}</h3>
-                                       <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-sm">Explore our curated {style.toLowerCase()} collection, meticulously designed for modern architectural spaces.</p>
-                                       <button className="inline-flex items-center gap-3 bg-white text-[#1F2E5A] font-bold text-[10px] uppercase tracking-[0.2em] px-6 py-3 rounded-full hover:bg-[#4CAF50] hover:text-white transition-all duration-300 group/btn">
-                                          Browse Style
-                                          <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                                       </button>
-                                    </div>
-                                 </div>
-                              );
-                           })()}
-
-                           {/* RIGHT: 3 Smaller Stacked Cards */}
-                           <div className="flex flex-col gap-4 h-auto lg:h-full">
-                              {data.styles.slice(1).map((style) => {
-                                 const styleImage = data.products.find(p => p.style === style)?.image || '/images/curtain1.png';
-                                 return (
-                                    <div
-                                       key={style}
-                                       className="group relative overflow-hidden rounded-2xl cursor-pointer flex-1 min-h-[160px]"
-                                       onClick={() => { setActiveStyle(style); setActiveRoom('All'); window.scrollTo({ top: 300, behavior: 'smooth' }); }}
-                                    >
-                                       <Image src={styleImage} alt={style} fill className="object-cover transition-transform duration-[1000ms] group-hover:scale-110" />
-                                       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
-                                       <div className="absolute inset-0 flex items-center p-6">
-                                          <div>
-                                             <span className="text-[8px] font-bold uppercase tracking-[0.3em] text-white/50 block mb-1">Signature Style</span>
-                                             <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-[#4CAF50] transition-colors">{style}</h3>
-                                             <button className="inline-flex items-center gap-2 text-white/80 font-bold text-[9px] uppercase tracking-widest hover:text-[#4CAF50] transition-colors group/btn mt-1">
-                                                <span>Browse</span>
-                                                <svg className="w-3 h-3 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                                             </button>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 );
-                              })}
-                           </div>
-
-                        </div>
-                     </div>
-                  ) : (
+                  {/* MAIN PORTFOLIO GRID SECTION */}
                      <>
                         {/* Tiered Filters + Search (Floating UI) */}
                         <div className="sticky top-20 z-30 mb-10 rounded-xl py-4 px-2 border-transparent transition-all">
@@ -217,22 +160,51 @@ function ProductsContent() {
                                  </div>
                                  {/* We add an "All Styles" reset button here to act as the 'All' pill */}
                                  <div className="flex flex-wrap gap-4 justify-center items-center">
-                                    <button
-                                       onClick={() => { setActiveStyle('All'); setActiveRoom('All'); }}
-                                       className={`px-6 py-2 rounded-full text-[9px] font-bold uppercase tracking-widest transition-all ${activeStyle === 'All'
-                                          ? 'bg-[#1F2E5A] text-white shadow-lg'
-                                          : 'bg-transparent text-slate-500 border border-slate-200 hover:text-[#4CAF50] hover:border-[#4CAF50]/30'
-                                          }`}
-                                    >
-                                       Show All Styles
-                                    </button>
+                                    {/* Style Dropdown */}
+                                    <div className="flex items-center gap-3 relative">
+                                       <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest hidden sm:block">Filter By Style:</span>
+                                       <div className="relative">
+                                          <button
+                                             onClick={() => { setIsStyleDropdownOpen(!isStyleDropdownOpen); setIsRoomDropdownOpen(false); }}
+                                             className="flex items-center gap-3 px-6 py-2 bg-transparent border border-slate-200 rounded-xl text-[9px] font-bold uppercase tracking-widest text-slate-600 hover:border-[#4CAF50]/30 transition-all"
+                                          >
+                                             <span>{activeStyle === 'All' ? 'All Styles' : activeStyle}</span>
+                                             <svg className={`w-3 h-3 text-slate-400 transition-transform duration-300 ${isStyleDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                             </svg>
+                                          </button>
+
+                                          {isStyleDropdownOpen && (
+                                             <>
+                                                <div className="fixed inset-0 z-40" onClick={() => setIsStyleDropdownOpen(false)} />
+                                                <div className="absolute top-full right-0 mt-2 w-56 bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl shadow-2xl py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-300">
+                                                   <div className="px-5 py-2 mb-1 border-b border-slate-50">
+                                                      <span className="text-[8px] font-bold text-slate-300 uppercase tracking-[0.2em]">Select Style</span>
+                                                   </div>
+                                                   {['All', ...data.styles].map(style => (
+                                                      <button
+                                                         key={style}
+                                                         onClick={() => { setActiveStyle(style); setIsStyleDropdownOpen(false); }}
+                                                         className={`w-full text-left px-5 py-2.5 text-[9px] font-bold uppercase tracking-widest transition-all ${activeStyle === style
+                                                            ? 'text-[#4CAF50] bg-[#4CAF50]/5'
+                                                            : 'text-slate-500 hover:bg-slate-50 hover:text-[#4CAF50]'
+                                                            }`}
+                                                      >
+                                                         {style === 'All' ? 'All Styles' : style}
+                                                      </button>
+                                                   ))}
+                                                </div>
+                                             </>
+                                          )}
+                                       </div>
+                                    </div>
 
                                     {/* Room Dropdown Moved Here */}
                                     <div className="flex items-center gap-3 relative">
-                                       <span className="text-[9px] font-bold text-slate-300 uppercase tracking-widest">Placement:</span>
+                                       <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest hidden sm:block">Filter By Room:</span>
                                        <div className="relative">
                                           <button
-                                             onClick={() => setIsRoomDropdownOpen(!isRoomDropdownOpen)}
+                                             onClick={() => { setIsRoomDropdownOpen(!isRoomDropdownOpen); setIsStyleDropdownOpen(false); }}
                                              className="flex items-center gap-3 px-6 py-2 bg-transparent border border-slate-200 rounded-xl text-[9px] font-bold uppercase tracking-widest text-slate-600 hover:border-[#4CAF50]/30 transition-all"
                                           >
                                              <span>{activeRoom === 'All' ? 'All Rooms' : activeRoom}</span>
@@ -312,14 +284,13 @@ function ProductsContent() {
                               <p className="text-slate-400 italic mb-10">No masterpieces found in this collection.</p>
                               <button
                                  onClick={() => { setActiveTab(data.tabs[0] || ''); setActiveStyle('All'); setActiveRoom('All'); setSearchQuery(''); }}
-                                 className="px-10 py-4 bg-[#4CAF50] text-white rounded-full font-bold text-[10px] uppercase tracking-widest shadow-2xl shadow-[#4CAF50]/20 hover:bg-[#1F2E5A] transition-all"
+                                 className="px-10 py-4 bg-[#4CAF50] text-white rounded-xl font-bold text-[10px] uppercase tracking-widest shadow-2xl shadow-[#4CAF50]/20 hover:bg-[#1F2E5A] transition-all"
                               >
                                  Reset Gallery
                               </button>
                            </div>
                         )}
                      </>
-                  )}
                </section>
             </div>
          </ScrollReveal>
