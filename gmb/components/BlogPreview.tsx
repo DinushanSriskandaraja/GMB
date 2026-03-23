@@ -31,7 +31,7 @@ const BlogPreview = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
           <div className="max-w-2xl">
-            <h2 className="text-4xl font-bold mb-4 text-slate-800">Latest from our <span className="gradient-text">Blog</span></h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">Latest from our <span className="gradient-text italic">Blog</span></h2>
             <p className="text-slate-500 text-lg">
               Explore our latest articles on interior design, fabric care, and window treatment trends.
             </p>
@@ -62,7 +62,7 @@ const BlogPreview = () => {
                 </div>
               </div>
               <p className="text-sm text-slate-500 font-medium mb-3">{post.date}</p>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 group-hover:text-primary transition-colors leading-tight">
+              <h3 className="text-xl md:text-2xl font-bold mb-4 text-slate-800 group-hover:text-primary transition-colors leading-tight">
                 {post.title}
               </h3>
               <p className="text-slate-600 mb-6 leading-relaxed">

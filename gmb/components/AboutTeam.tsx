@@ -28,7 +28,7 @@ const AboutTeam = () => {
     <section className="py-12 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-4 text-slate-800">Meet Our <span className="gradient-text">Expert Team</span></h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">Meet Our <span className="gradient-text"><span className="italic">Expert</span> Team</span></h2>
           <p className="text-slate-500 max-w-2xl mx-auto text-lg">
             The passionate specialists dedicated to bringing artistry and precision to your windows.
           </p>
@@ -46,7 +46,7 @@ const AboutTeam = () => {
                 />
                 {/* Permanent Info Overlay */}
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-8 pt-20 text-center">
-                  <h3 className="text-white text-2xl font-bold mb-1">{member.name}</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{member.name}</h3>
                   <p className="text-primary font-medium">{member.role}</p>
                 </div>
 

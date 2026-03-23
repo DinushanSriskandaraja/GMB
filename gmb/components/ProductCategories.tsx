@@ -33,7 +33,7 @@ const ProductCategories = () => {
     <section className="py-16 bg-transparent" id="categories">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold mb-4 text-slate-800">Our <span className="gradient-text">Product Categories</span></h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">Our <span className="gradient-text"><span className="italic">Product</span> Categories</span></h2>
           <p className="text-slate-500 max-w-2xl mx-auto text-lg">
             Choose from our wide range of premium window treatments tailored to your style.
           </p>
@@ -49,7 +49,7 @@ const ProductCategories = () => {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent flex flex-col justify-end p-8">
-                <h3 className="text-white text-2xl font-bold mb-1">{category.title}</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-1">{category.title}</h3>
                 <p className="text-white/80 text-sm leading-relaxed">{category.description}</p>
                 <Link href={category.link} className="mt-4">
                   <button className="text-white font-bold flex items-center gap-2 hover:text-primary transition-colors">

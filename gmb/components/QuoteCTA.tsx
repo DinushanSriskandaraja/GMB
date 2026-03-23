@@ -3,13 +3,13 @@ import Link from 'next/link';
 const QuoteCTA = () => {
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto relative rounded-xl overflow-hidden bg-gradient-to-r from-[#0F172A] to-[#1F2E5A] py-12 px-8 text-center text-white shadow-2xl shadow-[#1F2E5A]/50 border border-white/10">
+      <div className="max-w-7xl mx-auto relative rounded-xl overflow-hidden bg-gradient-to-r from-[#0F172A] to-[#1F2E5A] py-10 sm:py-12 px-5 sm:px-8 text-center text-white shadow-2xl shadow-[#1F2E5A]/50 border border-white/10">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-white/10 rounded-xl blur-3xl" />
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-96 h-96 bg-black/10 rounded-xl blur-3xl" />
 
         <div className="relative z-10 max-w-3xl mx-auto space-y-6">
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
             Ready to Transform Your Home?
           </h2>
           <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">

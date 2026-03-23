@@ -69,15 +69,15 @@ const Hero = () => {
       <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-96 h-96 bg-primary/10 rounded-xl blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 relative z-20">
-            <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-white drop-shadow-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="space-y-6 lg:space-y-8 relative z-20">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight text-white drop-shadow-2xl">
               Elevate Your Space with <span className="text-primary drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">Premium Curtains</span>
             </h1>
-            <p className="text-xl text-white/90 max-w-lg leading-relaxed drop-shadow-lg">
+            <p className="text-base sm:text-xl text-white/90 max-w-lg leading-relaxed drop-shadow-lg">
               Discover our exclusive collection of window treatments designed to bring elegance and comfort to your home.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-3">
               <button className="bg-[var(--accent-yellow)] text-slate-900 px-6 py-3 rounded-xl font-bold shadow-lg shadow-[#F4A300]/25 hover:scale-105 transition-transform">
                 Browse Collection
               </button>
@@ -92,7 +92,7 @@ const Hero = () => {
             </div>
 
             {/* Compact Stats Grid - Right under buttons */}
-            <div className="pt-8 grid grid-cols-2 gap-x-12 gap-y-6 w-fit">
+            <div className="pt-4 lg:pt-8 grid grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-4 lg:gap-y-6 w-fit">
               {stats.map((stat, index) => (
                 <div key={index} className="flex flex-col items-start space-y-1 group">
                   <div className="text-2xl lg:text-3xl font-black text-primary tracking-tighter drop-shadow-sm group-hover:scale-105 transition-transform duration-300 origin-left">
@@ -106,7 +106,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="lg:ml-auto w-full max-w-[380px]">
+          <div className="lg:ml-auto w-full max-w-[380px] mx-auto lg:mx-0">
             <div className="premium-card-dark bg-secondary p-6 glassmorphism-dark border-white/10">
               <h2 className="text-xl font-bold mb-5 text-white">Get a Free Consultation</h2>
               <form onSubmit={handleSubmit} className="space-y-3">

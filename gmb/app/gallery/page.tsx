@@ -47,7 +47,7 @@ export default function GalleryPage() {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-4xl font-serif font-medium text-slate-900 mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-6">
               Our Full <span className="text-primary italic">Portfolio</span>
             </h1>
             <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed">
@@ -91,7 +91,7 @@ export default function GalleryPage() {
                 {/* Details Below Image */}
                 <div className="mt-6 px-4">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold text-[#1F2E5A] tracking-tight">{item.title}</h3>
+                    <h3 className="text-xl md:text-2xl font-bold text-[#1F2E5A] tracking-tight mb-2">{item.title}</h3>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-bold text-[#4CAF50] uppercase tracking-[0.2em]">{item.category}</span>

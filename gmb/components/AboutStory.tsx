@@ -43,8 +43,8 @@ const AboutStory = () => {
     <section className="py-8 bg-transparent overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-3xl font-serif font-medium text-slate-800">
-            Our <span className="text-primary">Journey</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+            Our <span className="text-primary italic">Journey</span>
           </h2>
           <p className="mt-4 text-slate-500 max-w-2xl mx-auto text-lg">
             A compact look at our evolution from a local workshop to industry leaders.
@@ -53,7 +53,7 @@ const AboutStory = () => {
 
         <div className="relative">
           {/* Year Navigation */}
-          <div className="flex justify-between items-center mb-10 relative max-w-3xl mx-auto">
+          <div className="flex justify-between items-center mb-8 relative max-w-3xl mx-auto overflow-x-auto px-1">
             {/* Progress line background */}
             <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 -translate-y-1/2" />
 
@@ -75,7 +75,7 @@ const AboutStory = () => {
                       : 'bg-white border-slate-200 text-slate-400'
                     } ${index === activeIndex ? 'scale-125' : 'hover:scale-110'}`}
                 >
-                  <span className="text-xs font-bold">{item.year}</span>
+                  <span className="text-[7px] sm:text-xs font-bold">{item.year}</span>
                 </div>
               </button>
             ))}
@@ -114,7 +114,7 @@ const AboutStory = () => {
                     <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">
                       Chapter {index + 1}: {item.year}
                     </span>
-                    <h3 className="text-2xl md:text-2xl font-serif font-medium text-slate-900 mb-4">
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-4">
                       {item.title}
                     </h3>
                     <p className="text-lg text-slate-600 leading-relaxed italic">

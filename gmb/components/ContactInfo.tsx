@@ -36,14 +36,14 @@ const ContactInfo = () => {
     <section className="py-8 md:py-10 bg-transparent relative z-10">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-stretch">
-          
+
           {/* Left Column: Contact Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-3">
-            
+          <div className="md:col-span-5 flex flex-col gap-3">
+
             <div className="glassmorphism rounded-xl p-4 md:p-6 border border-white/60 shadow-2xl shadow-slate-200/50 flex-1 relative overflow-hidden group">
               {/* Decorative subtle glow */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-2xl -mr-10 -mt-10 transition-transform duration-700 group-hover:scale-150" />
-              
+
               <div className="relative z-10 mb-4">
                 <div className="inline-flex items-center gap-2 mb-1">
                   <div className="w-5 h-px bg-primary" />
@@ -56,8 +56,8 @@ const ContactInfo = () => {
 
               <div className="space-y-2 relative z-10 flex-1">
                 {infoItems.map((item, index) => (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     className="flex items-center gap-3 p-3 rounded-xl transition-all duration-300 hover:bg-white/60 border border-transparent hover:border-white/80 hover:shadow-sm group/card cursor-pointer"
                   >
                     <div className="w-8 h-8 shrink-0 bg-white shadow-sm rounded-lg flex items-center justify-center text-slate-400 transition-all duration-500 group-hover/card:bg-primary group-hover/card:text-white group-hover/card:shadow-primary/20 group-hover/card:-translate-y-[2px]">
@@ -81,7 +81,7 @@ const ContactInfo = () => {
             >
               {/* Animated Green Glow Matrix */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(37,211,102,0.15)_0,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-              
+
               <div className="relative z-10">
                 <span className="inline-block px-2 py-0.5 rounded-full bg-[#25D366]/10 text-[#25D366] text-[7px] font-bold uppercase tracking-[0.2em] mb-1.5 border border-[#25D366]/20">
                   Online Consultation
@@ -98,19 +98,19 @@ const ContactInfo = () => {
           </div>
 
           {/* Right Column: Showroom Image & Map */}
-          <div className="lg:col-span-7 relative min-h-[300px] lg:min-h-[10px] rounded-xl overflow-hidden shadow-2xl shadow-slate-300/50 group flex flex-col justify-end">
+          <div className="md:col-span-7 relative min-h-[260px] lg:min-h-[10px] rounded-xl overflow-hidden shadow-2xl shadow-slate-300/50 group flex flex-col justify-end">
             {/* Showroom Image Background */}
-            <Image 
-              src="/images/curtain5.png" 
-              alt="Our Luxury Showroom" 
-              fill 
+            <Image
+              src="/images/curtain5.png"
+              alt="Our Luxury Showroom"
+              fill
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
             />
-            
+
             {/* Elegant Gradient Overlays */}
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />
             <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
-            
+
             {/* Content Wrapper */}
             <div className="relative z-10 p-5 md:p-6 flex flex-col justify-end h-full">
               <div className="max-w-md transform transition-all duration-700 translate-y-2 group-hover:translate-y-0">
@@ -121,18 +121,18 @@ const ContactInfo = () => {
                   </svg>
                   <div className="absolute inset-0 bg-primary opacity-50 blur-lg rounded-full animate-pulse z-0" />
                 </div>
-                
+
                 <h3 className="text-xl md:text-2xl font-serif font-bold mb-2 text-white drop-shadow-md">
                   Visit Our Showroom
                 </h3>
-                
+
                 <p className="text-slate-300 text-xs leading-relaxed mb-4 font-medium line-clamp-2">
                   Located in the heart of the design district. Experience our fabrics, motorized systems, and premium craftsmanship in person.
                 </p>
-                
-                <a 
-                  href="https://maps.google.com" 
-                  target="_blank" 
+
+                <a
+                  href="https://maps.google.com"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-slate-900 rounded-full font-bold text-[9px] uppercase tracking-[0.2em] shadow-xl hover:bg-primary hover:text-white transition-all duration-300 w-max"
                 >
@@ -146,7 +146,7 @@ const ContactInfo = () => {
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
     </section>

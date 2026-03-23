@@ -32,8 +32,8 @@ const FAQ = () => {
     <section className="py-16 bg-transparent">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold mb-4 text-slate-800">
-            Frequently Asked <span className="gradient-text">Questions</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+            Frequently Asked <span className="gradient-text italic">Questions</span>
           </h2>
           <p className="text-slate-500 text-lg">
             Everything you need to know about our premium window treatments and services.
@@ -48,9 +48,9 @@ const FAQ = () => {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left focus:outline-none group"
+                className="w-full flex items-center justify-between p-4 sm:p-6 text-left focus:outline-none group"
               >
-                <span className="text-lg font-bold text-slate-700 group-hover:text-primary transition-colors">
+                <span className="text-base sm:text-lg font-bold text-slate-700 group-hover:text-primary transition-colors">
                   {faq.question}
                 </span>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${openIndex === index ? 'bg-primary text-white rotate-180' : 'bg-slate-100 text-slate-400 group-hover:bg-primary/10 group-hover:text-primary'}`}>

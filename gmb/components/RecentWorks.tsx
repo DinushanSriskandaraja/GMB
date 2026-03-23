@@ -59,8 +59,8 @@ const Gallery = () => {
               <div className="w-6 h-px bg-primary" />
               <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-primary">Portfolio</span>
             </div>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter leading-tight text-slate-900">
-              Our <span className="gradient-text">Recent Works</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-2">
+              Our <span className="gradient-text"><span className="italic">Recent</span> Works</span>
             </h2>
             <p className="mt-2 text-slate-500 text-sm leading-relaxed font-medium">
               Explore our latest bespoke window treatments.

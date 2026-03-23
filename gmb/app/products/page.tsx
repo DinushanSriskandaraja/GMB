@@ -125,8 +125,8 @@ function ProductsContent() {
                      <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#4CAF50]">Curated Collection</span>
                      <div className="w-12 h-px bg-[#4CAF50]" />
                   </div>
-                  <h1 className="text-3xl md:text-4xl font-bold tracking-tighter leading-tight text-[#1F2E5A] mb-4">
-                     <span className="gradient-text">{activeStyle !== 'All' ? activeStyle : activeTab || "Collection"}</span>
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+                     <span className="gradient-text italic">{activeStyle !== 'All' ? activeStyle : activeTab || "Collection"}</span>
                   </h1>
                   <p className="max-w-2xl mx-auto text-slate-500 text-sm leading-relaxed font-medium">
                      {activeStyle !== 'All' ? `Explore our signature ${activeStyle.toLowerCase()} collection.` : (data.categoryMetadata[activeTab] || "Explore our exclusive collection of architectural window treatments.")}
@@ -155,7 +155,7 @@ function ProductsContent() {
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                                     <div className="absolute bottom-0 left-0 p-8 md:p-10">
                                        <span className="inline-block text-[9px] font-bold uppercase tracking-[0.4em] text-white/60 mb-3">Signature Style</span>
-                                       <h3 className="text-white text-4xl md:text-5xl font-bold leading-tight mb-3">{style}</h3>
+                                       <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">{style}</h3>
                                        <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-sm">Explore our curated {style.toLowerCase()} collection, meticulously designed for modern architectural spaces.</p>
                                        <button className="inline-flex items-center gap-3 bg-white text-[#1F2E5A] font-bold text-[10px] uppercase tracking-[0.2em] px-6 py-3 rounded-full hover:bg-[#4CAF50] hover:text-white transition-all duration-300 group/btn">
                                           Browse Style
@@ -181,7 +181,7 @@ function ProductsContent() {
                                        <div className="absolute inset-0 flex items-center p-6">
                                           <div>
                                              <span className="text-[8px] font-bold uppercase tracking-[0.3em] text-white/50 block mb-1">Signature Style</span>
-                                             <h3 className="text-white text-xl font-bold mb-1 group-hover:text-[#4CAF50] transition-colors">{style}</h3>
+                                             <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-[#4CAF50] transition-colors">{style}</h3>
                                              <button className="inline-flex items-center gap-2 text-white/80 font-bold text-[9px] uppercase tracking-widest hover:text-[#4CAF50] transition-colors group/btn mt-1">
                                                 <span>Browse</span>
                                                 <svg className="w-3 h-3 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>

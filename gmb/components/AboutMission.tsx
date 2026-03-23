@@ -18,7 +18,7 @@ const AboutMission = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-800 leading-tight">Our <span className="gradient-text">Mission</span></h2>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">Our <span className="gradient-text italic">Mission</span></h2>
                   <p className="text-lg text-slate-600 leading-relaxed font-light">
                     To transform indoor spaces into <span className="text-slate-900 font-medium italic">havens of comfort</span> and style through artisan craftsmanship, innovative design, and personalized service that exceeds expectations.
                   </p>
@@ -46,7 +46,7 @@ const AboutMission = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-800 leading-tight">Our <span className="gradient-text">Vision</span></h2>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">Our <span className="gradient-text italic">Vision</span></h2>
                   <p className="text-lg text-slate-600 leading-relaxed font-light">
                     To be the <span className="text-slate-900 font-medium italic">global benchmark</span> for luxury window treatments, recognized for our commitment to sustainability, artistic integrity, and the elevation of modern living.
                   </p>

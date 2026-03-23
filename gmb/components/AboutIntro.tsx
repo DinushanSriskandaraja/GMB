@@ -12,8 +12,8 @@ const AboutIntro = () => {
             <div className="absolute inset-0 bg-primary/5" />
           </div>
           <div className="space-y-8">
-            <h2 className="text-3xl font-bold leading-tight text-slate-800">
-              A Legacy of <span className="gradient-text">Excellence and Trust</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+              A Legacy of <span className="gradient-text"><span className="italic">Excellence</span> and Trust</span>
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
               GMB started as a small family-owned workshop with a single mission: to provide high-quality, bespoke window treatments that reflect the personality of every home.
