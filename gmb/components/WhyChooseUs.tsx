@@ -1,92 +1,123 @@
 const WhyChooseUs = () => {
   return (
-    <section className="py-10 md:py-14 bg-transparent">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10">
-        {/* Headline – clean & confident */}
-        <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900">
-            Why Choose <span className="gradient-text italic">GMB</span>
+    <section className="py-16 md:py-20 lg:py-24  relative overflow-hidden">
+      {/* Very soft ambient gradient + noise for tactile luxury feel */}
+      <div className="absolute inset-0 pointer-events-none" />
+      {/* <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#cbd5e1_0.6px,transparent_1px)] [background-size:28px_28px] pointer-events-none" /> */}
+
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
+        {/* Hero-style text block – bold, emotional, trend-forward */}
+        <div className="text-center mb-14 md:mb-18">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-tight text-gray-900">
+            Your windows deserve
+            <span className="gradient-text"><span className="italic">more than Ordinary</span>
+              
+            </span>
           </h2>
-          <p className="mt-3 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Premium window elegance — crafted for beauty, comfort, and lasting value.
+          <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
+            At GMB we don’t just hang curtains — we craft calm, beauty and quiet confidence for the homes that matter most.
           </p>
         </div>
 
-        {/* Icons – centered horizontal row, stacks on mobile */}
-        <div className="flex flex-wrap justify-center gap-8 md:gap-10 lg:gap-12 mb-10">
-          <div className="flex flex-col items-center text-center group max-w-[160px]">
-            <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110 shadow-sm">
-              {/* Shield – Quality */}
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196.001-6.1-1.248-8.25-3.285z" />
-              </svg>
+        {/* Four elegant spotlight features – asymmetrical stagger + reveal on hover */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 lg:gap-12">
+          {/* Feature 1 – spans more, left aligned */}
+          <div className="md:col-span-7 group bg-gradient-to-br from-white to-teal-50/30 rounded-3xl p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-teal-100/40">
+            <div className="flex items-start gap-6">
+              <div className="flex-shrink-0">
+                <div className="w-20 h-20 rounded-2xl bg-primary  flex items-center justify-center shadow-xl shadow-teal-500/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-400">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196.001-6.1-1.248-8.25-3.285z" />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4 group-hover:text-teal-700 transition-colors">
+                  Fabrics You Fall For
+                </h3>
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                  Luxuriously soft, fade-defying textiles sourced from the world’s most respected mills — touchable elegance built to age beautifully.
+                </p>
+              </div>
             </div>
-            <h3 className="text-xl md:text-2xl font-bold text-slate-800">Superior Quality</h3>
-            <p className="text-sm text-slate-600 mt-1">Finest global fabrics</p>
           </div>
 
-          <div className="flex flex-col items-center text-center group max-w-[160px]">
-            <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110 shadow-sm">
-              {/* Sparkles – Craftsmanship */}
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-              </svg>
+          {/* Feature 2 – right side, offset up */}
+          <div className="md:col-span-5 md:mt-12 group bg-gradient-to-br from-white to-cyan-50/30 rounded-3xl p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-cyan-100/40">
+            <div className="flex items-start gap-6">
+              <div className="flex-shrink-0">
+                <div className="w-20 h-20 rounded-2xl bg-primary   flex items-center justify-center shadow-xl shadow-cyan-500/20 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-400">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4 group-hover:text-cyan-700 transition-colors">
+                  Made by Hand
+                </h3>
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                  20+ years of artisan precision — every stitch thoughtful, every edge flawless.
+                </p>
+              </div>
             </div>
-            <h3 className="text-xl md:text-2xl font-bold text-slate-800">Master Crafted</h3>
-            <p className="text-sm text-slate-600 mt-1">20+ years precision</p>
           </div>
 
-          <div className="flex flex-col items-center text-center group max-w-[160px]">
-            <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110 shadow-sm">
-              {/* Clock – Speed */}
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+          {/* Feature 3 – left, offset down */}
+          <div className="md:col-span-5 md:-mt-8 group bg-gradient-to-br from-white to-teal-50/30 rounded-3xl p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-teal-100/40">
+            <div className="flex items-start gap-6">
+              <div className="flex-shrink-0">
+                <div className="w-20 h-20 rounded-2xl bg-primary   flex items-center justify-center shadow-xl shadow-teal-500/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-400">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4 group-hover:text-teal-700 transition-colors">
+                  Installed Flawlessly
+                </h3>
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                  One clean visit. No dust. No stress. Just perfect fit the first time.
+                </p>
+              </div>
             </div>
-            <h3 className="text-xl md:text-2xl font-bold text-slate-800">Swift Install</h3>
-            <p className="text-sm text-slate-600 mt-1">Clean & professional</p>
           </div>
 
-          <div className="flex flex-col items-center text-center group max-w-[160px]">
-            <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110 shadow-sm">
-              {/* Chat – Consultation */}
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-              </svg>
+          {/* Feature 4 – right, larger span */}
+          <div className="md:col-span-7 group bg-gradient-to-br from-white to-cyan-50/30 rounded-3xl p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-cyan-100/40">
+            <div className="flex items-start gap-6">
+              <div className="flex-shrink-0">
+                <div className="w-20 h-20 rounded-2xl bg-primary  flex items-center justify-center shadow-xl shadow-cyan-500/20 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-400">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4 group-hover:text-cyan-700 transition-colors">
+                  Guided by You
+                </h3>
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                  Free in-home visit. Honest conversation. Recommendations that truly fit your life.
+                </p>
+              </div>
             </div>
-            <h3 className="text-xl md:text-2xl font-bold text-slate-800">Free Advice</h3>
-            <p className="text-sm text-slate-600 mt-1">Personalized & no-obligation</p>
           </div>
         </div>
 
-        {/* Inspirational visuals – carousel-friendly */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 rounded-xl overflow-hidden shadow-md">
-          {/* Replace src with your own if needed – these are high-quality luxury examples */}
-          <img
-            src="https://cdn.mos.cms.futurecdn.net/JQrgjbXv7j8ZdpFiKUeFqm.jpg"
-            alt="Elegant teal curtains in luxurious living room"
-            className="w-full h-48 object-cover"
-          />
-          <img
-            src="https://cdn.shopify.com/s/files/1/0056/1011/1064/files/Shelby_1_1024x1024.jpg?v=1706688467"
-            alt="Modern neutral curtains in cozy living space"
-            className="w-full h-48 object-cover"
-          />
-          <img
-            src="https://easeeasecurtains.com/cdn/shop/files/homepage_banner_69212116-904f-479e-a606-9b039d7f87f5.webp?v=1715069504&width=3840"
-            alt="Sheer white drapes in bright elegant room"
-            className="w-full h-48 object-cover"
-          />
-          <img
-            src="https://www.thespruce.com/thmb/VugN0BgoJytiNoZ8UfwPgwLTd-w=/2400x0/filters:no_upscale():max_bytes(150000):strip_icc()/helfordln-1-0722d13eb17e4c8b9ca79e86b1638c69.jpg"
-            alt="Beige linen curtains in airy coastal-style room"
-            className="w-full h-48 object-cover"
-          />
-        </div>
-
-        {/* Subtle CTA line */}
-        <div className="text-center mt-8 text-slate-600 text-sm md:text-base">
-          Ready to elevate your windows? Book your free consultation today.
+        {/* Friendly, standout CTA – magnetic & inviting */}
+        <div className="text-center mt-16 md:mt-20">
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-4 px-10 py-6 bg-[var(--accent-yellow)] text-xl font-medium rounded-2xl shadow-xl hover:shadow-2xl hover:brightness-110 hover:-translate-y-1 transition-all duration-300"
+          >
+            Let’s make your windows feel like home
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <p className="mt-4 text-base text-gray-500">Takes 2 minutes • Always free • Zero pressure</p>
         </div>
       </div>
     </section>

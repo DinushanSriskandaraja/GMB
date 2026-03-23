@@ -16,9 +16,11 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ScrollReveal><ProductCategories /></ScrollReveal>
+      
       <ScrollReveal><RecentWorks /></ScrollReveal>
-      <ScrollReveal><WhyChooseUs /></ScrollReveal>
       <ScrollReveal><Testimonials /></ScrollReveal>
+      <ScrollReveal><WhyChooseUs /></ScrollReveal>
+      
       <ScrollReveal><FAQ /></ScrollReveal>
       <ScrollReveal><BlogPreview /></ScrollReveal>
       <ScrollReveal><QuoteCTA /></ScrollReveal>

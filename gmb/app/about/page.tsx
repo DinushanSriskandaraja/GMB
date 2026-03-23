@@ -18,9 +18,9 @@ export default function AboutPage() {
       <Navbar />
       <AboutHero />
       <ScrollReveal><AboutIntro /></ScrollReveal>
-      <ScrollReveal><AboutStory /></ScrollReveal>
+      {/* <ScrollReveal><AboutStory /></ScrollReveal> */}
       <ScrollReveal><AboutStats /></ScrollReveal>
-      <ScrollReveal><AboutMission /></ScrollReveal>
+      {/* <ScrollReveal><AboutMission /></ScrollReveal> */}
       <ScrollReveal><AboutTeam /></ScrollReveal>
       <ScrollReveal><AboutProcess /></ScrollReveal>
       <ScrollReveal><QuoteCTA /></ScrollReveal>
