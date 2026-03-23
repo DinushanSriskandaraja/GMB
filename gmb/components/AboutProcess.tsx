@@ -44,7 +44,7 @@ const AboutProcess = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {steps.map((step, index) => (
-            <div key={index} className="premium-card p-10 glassmorphism relative group hover:bg-transparent transition-all duration-500">
+            <div key={index} className="premium-card p-10 glassmorphism relative group hover:bg-transparent transition-all duration-500 rounded-xl">
               <span className="text-4xl font-black text-primary/10 absolute top-6 right-6 group-hover:text-primary/20 transition-colors">
                 {step.number}
               </span>

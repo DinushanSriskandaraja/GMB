@@ -17,7 +17,7 @@ function GalleryContent() {
   useEffect(() => {
     async function fetchGallery() {
       try {
-        const res = await fetch('/api/public/gallery');
+        const res = await fetch('/api/public/products'); // Using products API for rich data
         const data = await res.json();
         setGalleryItems(data.gallery || []);
       } catch (error) {
@@ -81,8 +81,8 @@ function GalleryContent() {
                   key={loc as string}
                   onClick={() => setActiveLocation(loc as string)}
                   className={`px-6 py-2 rounded-full font-bold uppercase tracking-widest text-[9px] transition-all duration-300 shadow-sm ${activeLocation === loc
-                      ? 'bg-[#4CAF50] text-white shadow-md scale-105'
-                      : 'bg-white text-slate-500 border border-slate-200 hover:border-[#4CAF50]/50 hover:text-[#4CAF50]'
+                    ? 'bg-[#4CAF50] text-white shadow-md scale-105'
+                    : 'bg-white text-slate-500 border border-slate-200 hover:border-[#4CAF50]/50 hover:text-[#4CAF50]'
                     }`}
                 >
                   {loc as string}
@@ -91,7 +91,7 @@ function GalleryContent() {
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
             {filteredItems.map((item, idx) => (
               <div
                 key={item.id}
@@ -121,6 +121,7 @@ function GalleryContent() {
             ))}
           </div>
 
+          {/* Empty State */}
           {filteredItems.length === 0 && (
             <div className="text-center py-24">
               <span className="text-4xl font-bold text-slate-200 select-none block mb-6 px-10">Empty Portfolio</span>

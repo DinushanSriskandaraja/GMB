@@ -36,15 +36,19 @@ const BlogPreview = () => {
               Explore our latest articles on interior design, fabric care, and window treatment trends.
             </p>
           </div>
-          <Link
-            href="/blog"
-            className="flex items-center justify-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-xl font-bold hover:bg-primary transition-all shadow-lg shadow-slate-900/10 hover:shadow-primary/20 group whitespace-nowrap"
-          >
-            View All Articles
-            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
+          <div className="shrink-0 pb-1">
+            <Link
+              href="/blog"
+              className="group inline-flex items-center gap-2 text-slate-900 font-bold text-sm uppercase tracking-widest hover:text-primary transition-colors whitespace-nowrap"
+            >
+              <span className="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-right group-hover:after:origin-left group-hover:after:scale-x-100 after:transition-transform after:duration-300">
+                View All Articles
+              </span>
+              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">

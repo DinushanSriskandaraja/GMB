@@ -8,7 +8,7 @@ import { Suspense } from 'react';
 const ContactFormContent = () => {
   const searchParams = useSearchParams();
   const [formType, setFormType] = useState<'general' | 'quote'>('general');
-  const [products, setProducts] = useState([{ category: 'Curtains', count: 1 }]);
+  const [products, setProducts] = useState<{category: string; count: number; width: string; height: string;}[]>([{ category: 'Curtains', count: 1, width: '', height: '' }]);
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', message: '', address: '' });
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [isScanning, setIsScanning] = useState(false);
@@ -69,7 +69,7 @@ const ContactFormContent = () => {
       if (res.ok) {
         setStatus('success');
         setFormData({ name: '', phone: '', email: '', message: '', address: '' });
-        setProducts([{ category: 'Curtains', count: 1 }]);
+        setProducts([{ category: 'Curtains', count: 1, width: '', height: '' }]);
         setPdfFile(null);
       } else {
         setStatus('error');
@@ -82,7 +82,7 @@ const ContactFormContent = () => {
   };
 
   const addProduct = () => {
-    setProducts([...products, { category: 'Curtains', count: 1 }]);
+    setProducts([...products, { category: 'Curtains', count: 1, width: '', height: '' }]);
   };
 
   const removeProduct = (index: number) => {
@@ -91,7 +91,7 @@ const ContactFormContent = () => {
     }
   };
 
-  const updateProduct = (index: number, field: 'category' | 'count', value: string | number) => {
+  const updateProduct = (index: number, field: string, value: string | number) => {
     const newProducts = [...products];
     newProducts[index] = { ...newProducts[index], [field]: value };
     setProducts(newProducts);
@@ -262,8 +262,8 @@ const ContactFormContent = () => {
                   </div>
                   
                   {products.map((product, index) => (
-                    <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-3 items-end bg-slate-50 p-3 rounded-xl border border-slate-100 relative group">
-                      <div className="md:col-span-7 space-y-1">
+                    <div key={index} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-3 items-end bg-slate-50 p-4 rounded-xl border border-slate-100 relative group">
+                      <div className="md:col-span-4 space-y-1">
                         <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Product Category</label>
                         <select 
                           value={product.category}
@@ -276,7 +276,7 @@ const ContactFormContent = () => {
                           <option>Motorized Blinds</option>
                         </select>
                       </div>
-                      <div className="md:col-span-4 space-y-1">
+                      <div className="md:col-span-2 space-y-1">
                         <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Windows</label>
                         <input 
                           type="number" 
@@ -286,14 +286,35 @@ const ContactFormContent = () => {
                           className="w-full px-4 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800" 
                         />
                       </div>
-                      <div className="md:col-span-1 flex justify-center pb-1">
+                      <div className="md:col-span-3 space-y-1">
+                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Width (in / cm)</label>
+                        <input 
+                          type="text" 
+                          placeholder="e.g. 120cm"
+                          value={product.width || ''}
+                          onChange={(e) => updateProduct(index, 'width', e.target.value)}
+                          className="w-full px-4 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800" 
+                        />
+                      </div>
+                      <div className="md:col-span-2 space-y-1">
+                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Height</label>
+                        <input 
+                          type="text" 
+                          placeholder="e.g. 200cm"
+                          value={product.height || ''}
+                          onChange={(e) => updateProduct(index, 'height', e.target.value)}
+                          className="w-full px-4 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all bg-white text-slate-800" 
+                        />
+                      </div>
+                      <div className="md:col-span-1 flex justify-center sm:justify-start md:justify-center pb-1">
                         <button 
                           type="button"
                           onClick={() => removeProduct(index)}
-                          className={`text-red-400 hover:text-red-600 transition-colors ${products.length === 1 ? 'opacity-0 cursor-default' : 'opacity-100'}`}
+                          className={`text-red-400 hover:text-red-600 transition-colors ${products.length === 1 ? 'opacity-0 cursor-default pointer-events-none' : 'opacity-100'}`}
                           disabled={products.length === 1}
+                          title="Remove Product"
                         >
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                           </svg>
                         </button>
