@@ -3,7 +3,12 @@
 import { useModal } from '@/lib/ModalContext';
 import Link from 'next/link';
 
-const Navbar = () => {
+interface NavbarProps {
+  onProductHover?: () => void;
+  onProductLeave?: () => void;
+}
+
+const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
   const { openTrackModal } = useModal();
 
   return (
@@ -18,7 +23,14 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               <Link href="/" className="text-slate-700 hover:text-primary transition-colors font-medium">Home</Link>
-              <Link href="/products" className="text-slate-700 hover:text-primary transition-colors font-medium">Products</Link>
+              <Link 
+                href="/products" 
+                className="text-slate-700 hover:text-primary transition-colors font-medium"
+                onMouseEnter={onProductHover}
+                onMouseLeave={onProductLeave}
+              >
+                Products
+              </Link>
               <Link href="/about" className="text-slate-700 hover:text-primary transition-colors font-medium">About</Link>
               <Link href="/contact" className="text-slate-700 hover:text-primary transition-colors font-medium">Contact</Link>
             </div>

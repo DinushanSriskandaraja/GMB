@@ -1,6 +1,5 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import Stats from '@/components/Stats';
 import ProductCategories from '@/components/ProductCategories';
 import RecentWorks from '@/components/RecentWorks';
 import WhyChooseUs from '@/components/WhyChooseUs';
@@ -16,7 +15,6 @@ export default function Home() {
     <main className="min-h-[70vh]">
       <Navbar />
       <Hero />
-      <ScrollReveal><Stats /></ScrollReveal>
       <ScrollReveal><ProductCategories /></ScrollReveal>
       <ScrollReveal><RecentWorks /></ScrollReveal>
       <ScrollReveal><WhyChooseUs /></ScrollReveal>

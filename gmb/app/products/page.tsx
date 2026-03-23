@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -29,8 +29,22 @@ function ProductsContent() {
    const [activeStyle, setActiveStyle] = useState('All');
    const [activeRoom, setActiveRoom] = useState('All');
    const [searchQuery, setSearchQuery] = useState('');
+   const [isRoomDropdownOpen, setIsRoomDropdownOpen] = useState(false);
    const [loading, setLoading] = useState(true);
    const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+   const [isSecondaryNavVisible, setIsSecondaryNavVisible] = useState(false);
+   const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+   const handleMouseEnter = () => {
+      if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+      setIsSecondaryNavVisible(true);
+   };
+
+   const handleMouseLeave = () => {
+      hideTimeoutRef.current = setTimeout(() => {
+         setIsSecondaryNavVisible(false);
+      }, 300);
+   };
 
    useEffect(() => {
       async function fetchProducts() {
@@ -74,27 +88,33 @@ function ProductsContent() {
 
    return (
       <main className="min-h-[70vh] bg-transparent">
-         <Navbar />
+         <Navbar onProductHover={handleMouseEnter} onProductLeave={handleMouseLeave} />
 
          <ScrollReveal delay={0.1}>
             <div className="pt-16 pb-6 mt-8">
                {/* --- SECONDARY NAVBAR: CATEGORY SELECTOR --- */}
-               <div className="max-w-7xl mx-auto px-6 mb-8">
-                  <div className="glassmorphism rounded-xl p-4 border-white/40 shadow-xl shadow-slate-200/50 backdrop-blur-2xl">
-                     <nav className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
-                        {data.tabs.map((tab) => (
-                           <button
-                              key={tab}
-                              onClick={() => { setActiveTab(tab); setActiveStyle('All'); setActiveRoom('All'); setSearchQuery(''); }}
-                              className={`group relative py-2 px-4 transition-all duration-300 ${activeTab === tab ? 'text-[#1F2E5A]' : 'text-slate-400 hover:text-[#1F2E5A]'}`}
-                           >
-                              <span className="text-sm font-bold uppercase tracking-widest z-10 relative">{tab}</span>
-                              {activeTab === tab && (
-                                 <div className="absolute inset-x-0 bottom-0 h-1 bg-[#4CAF50] rounded-full animate-in fade-in slide-in-from-bottom-2" />
-                              )}
-                           </button>
-                        ))}
-                     </nav>
+               <div 
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  className={`transition-all duration-500 ease-in-out ${isSecondaryNavVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
+               >
+                  <div className="max-w-7xl mx-auto px-6 mb-8">
+                     <div className="glassmorphism rounded-xl p-4 border-white/40 shadow-xl shadow-slate-200/50 backdrop-blur-2xl">
+                        <nav className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
+                           {data.tabs.map((tab) => (
+                              <button
+                                 key={tab}
+                                 onClick={() => { setActiveTab(tab); setActiveStyle('All'); setActiveRoom('All'); setSearchQuery(''); }}
+                                 className={`group relative py-2 px-4 transition-all duration-300 ${activeTab === tab ? 'text-[#1F2E5A]' : 'text-slate-400 hover:text-[#1F2E5A]'}`}
+                              >
+                                 <span className="text-sm font-bold uppercase tracking-widest z-10 relative">{tab}</span>
+                                 {activeTab === tab && (
+                                    <div className="absolute inset-x-0 bottom-0 h-1 bg-[#4CAF50] rounded-full animate-in fade-in slide-in-from-bottom-2" />
+                                 )}
+                              </button>
+                           ))}
+                        </nav>
+                     </div>
                   </div>
                </div>
 
@@ -118,85 +138,137 @@ function ProductsContent() {
 
                   {/* STYLE FILTERS AS CARDS (Matching ProductCategories.tsx) */}
                   {activeStyle === 'All' && activeTab ? (
-                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                        {data.styles.map((style) => {
-                           const styleImage = data.products.find(p => p.style === style)?.image || '/images/curtain1.png';
-                           return (
-                              <div
-                                 key={style}
-                                 className="premium-card relative h-[380px] overflow-hidden rounded-xl cursor-pointer transition-all hover:ring-4 hover:ring-[#4CAF50] hover:ring-offset-4 hover:ring-offset-[#fafaf9] hover:shadow-2xl"
-                                 onClick={() => { setActiveStyle(style); setActiveRoom('All'); window.scrollTo({ top: 300, behavior: 'smooth' }); }}
-                              >
-                                 <Image
-                                    src={styleImage}
-                                    alt={style}
-                                    fill
-                                    className="object-cover transition-transform duration-700 hover:scale-105"
-                                 />
-                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent flex flex-col justify-end p-8">
-                                    <h3 className="text-white text-2xl font-bold mb-1">{style}</h3>
-                                    <p className="text-white/80 text-sm leading-relaxed">Explore our signature {style.toLowerCase()} collection.</p>
-                                    <div className="mt-4">
-                                       <button className="text-white font-bold flex items-center gap-2 hover:text-primary transition-colors">
+                     <div className="max-w-[1400px] mx-auto mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-4 h-auto lg:h-[700px]">
+
+                           {/* LEFT: Large Hero Card — First Style */}
+                           {data.styles[0] && (() => {
+                              const style = data.styles[0];
+                              const styleImage = data.products.find(p => p.style === style)?.image || '/images/curtain1.png';
+                              return (
+                                 <div
+                                    key={style}
+                                    className="group relative overflow-hidden rounded-3xl cursor-pointer h-[400px] lg:h-full"
+                                    onClick={() => { setActiveStyle(style); setActiveRoom('All'); window.scrollTo({ top: 300, behavior: 'smooth' }); }}
+                                 >
+                                    <Image src={styleImage} alt={style} fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-105" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                                    <div className="absolute bottom-0 left-0 p-8 md:p-10">
+                                       <span className="inline-block text-[9px] font-bold uppercase tracking-[0.4em] text-white/60 mb-3">Signature Style</span>
+                                       <h3 className="text-white text-4xl md:text-5xl font-bold leading-tight mb-3">{style}</h3>
+                                       <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-sm">Explore our curated {style.toLowerCase()} collection, meticulously designed for modern architectural spaces.</p>
+                                       <button className="inline-flex items-center gap-3 bg-white text-[#1F2E5A] font-bold text-[10px] uppercase tracking-[0.2em] px-6 py-3 rounded-full hover:bg-[#4CAF50] hover:text-white transition-all duration-300 group/btn">
                                           Browse Style
-                                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                          <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                                        </button>
                                     </div>
                                  </div>
-                              </div>
-                           );
-                        })}
+                              );
+                           })()}
+
+                           {/* RIGHT: 3 Smaller Stacked Cards */}
+                           <div className="flex flex-col gap-4 h-auto lg:h-full">
+                              {data.styles.slice(1).map((style) => {
+                                 const styleImage = data.products.find(p => p.style === style)?.image || '/images/curtain1.png';
+                                 return (
+                                    <div
+                                       key={style}
+                                       className="group relative overflow-hidden rounded-2xl cursor-pointer flex-1 min-h-[160px]"
+                                       onClick={() => { setActiveStyle(style); setActiveRoom('All'); window.scrollTo({ top: 300, behavior: 'smooth' }); }}
+                                    >
+                                       <Image src={styleImage} alt={style} fill className="object-cover transition-transform duration-[1000ms] group-hover:scale-110" />
+                                       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
+                                       <div className="absolute inset-0 flex items-center p-6">
+                                          <div>
+                                             <span className="text-[8px] font-bold uppercase tracking-[0.3em] text-white/50 block mb-1">Signature Style</span>
+                                             <h3 className="text-white text-xl font-bold mb-1 group-hover:text-[#4CAF50] transition-colors">{style}</h3>
+                                             <button className="inline-flex items-center gap-2 text-white/80 font-bold text-[9px] uppercase tracking-widest hover:text-[#4CAF50] transition-colors group/btn mt-1">
+                                                <span>Browse</span>
+                                                <svg className="w-3 h-3 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                                             </button>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 );
+                              })}
+                           </div>
+
+                        </div>
                      </div>
                   ) : (
                      <>
                         {/* Tiered Filters + Search (Floating UI) */}
-                        <div className="sticky top-20 z-30 mb-4 glassmorphism rounded-xl p-3 border-white/40 shadow-lg shadow-slate-200/50 backdrop-blur-2xl">
-                           <div className="flex flex-col gap-3">
+                        <div className="sticky top-20 z-30 mb-10 rounded-xl py-4 px-2 border-transparent transition-all">
+                           <div className="flex flex-col gap-4">
 
                               {/* Top Row: Search (Style tabs were moved to cards above) */}
                               <div className="flex flex-col xl:flex-row items-center gap-3 justify-between">
                                  <div className="relative w-full xl:w-72 group">
-                                    <input
-                                       type="text"
-                                       placeholder="Search over all active styles..."
-                                       value={searchQuery}
-                                       onChange={(e) => setSearchQuery(e.target.value)}
-                                       className="w-full bg-white/50 border border-slate-100 rounded-xl py-2 pl-12 pr-4 text-xs font-bold tracking-widest focus:outline-none focus:ring-2 focus:ring-[#4CAF50]/20 focus:bg-white transition-all"
-                                    />
+                                     <input
+                                        type="text"
+                                        placeholder="Search over all active styles..."
+                                        value={searchQuery}
+                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                        className="w-full bg-transparent border border-slate-200 rounded-xl py-2 pl-12 pr-4 text-xs font-bold tracking-widest focus:outline-none focus:ring-2 focus:ring-[#4CAF50]/20 transition-all"
+                                     />
                                     <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#4CAF50] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
                                  </div>
                                  {/* We add an "All Styles" reset button here to act as the 'All' pill */}
-                                 <div className="flex flex-wrap gap-2 justify-center">
+                                 <div className="flex flex-wrap gap-4 justify-center items-center">
                                     <button
                                        onClick={() => { setActiveStyle('All'); setActiveRoom('All'); }}
                                        className={`px-6 py-2 rounded-full text-[9px] font-bold uppercase tracking-widest transition-all ${activeStyle === 'All'
                                           ? 'bg-[#1F2E5A] text-white shadow-lg'
-                                          : 'bg-white text-slate-400 border border-slate-100 hover:text-[#4CAF50] hover:border-[#4CAF50]/30'
+                                          : 'bg-transparent text-slate-500 border border-slate-200 hover:text-[#4CAF50] hover:border-[#4CAF50]/30'
                                           }`}
                                     >
                                        Show All Styles
                                     </button>
+
+                                    {/* Room Dropdown Moved Here */}
+                                    <div className="flex items-center gap-3 relative">
+                                       <span className="text-[9px] font-bold text-slate-300 uppercase tracking-widest">Placement:</span>
+                                       <div className="relative">
+                                          <button
+                                             onClick={() => setIsRoomDropdownOpen(!isRoomDropdownOpen)}
+                                             className="flex items-center gap-3 px-6 py-2 bg-transparent border border-slate-200 rounded-xl text-[9px] font-bold uppercase tracking-widest text-slate-600 hover:border-[#4CAF50]/30 transition-all"
+                                          >
+                                             <span>{activeRoom === 'All' ? 'All Rooms' : activeRoom}</span>
+                                             <svg className={`w-3 h-3 text-slate-400 transition-transform duration-300 ${isRoomDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                             </svg>
+                                          </button>
+
+                                          {isRoomDropdownOpen && (
+                                             <>
+                                                <div className="fixed inset-0 z-40" onClick={() => setIsRoomDropdownOpen(false)} />
+                                                <div className="absolute top-full right-0 mt-2 w-56 bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl shadow-2xl py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-300">
+                                                   <div className="px-5 py-2 mb-1 border-b border-slate-50">
+                                                      <span className="text-[8px] font-bold text-slate-300 uppercase tracking-[0.2em]">Select Room</span>
+                                                   </div>
+                                                   {['All', ...data.rooms].map(room => (
+                                                      <button
+                                                         key={room}
+                                                         onClick={() => { setActiveRoom(room); setIsRoomDropdownOpen(false); }}
+                                                         className={`w-full text-left px-5 py-2.5 text-[9px] font-bold uppercase tracking-widest transition-all ${activeRoom === room
+                                                            ? 'text-[#4CAF50] bg-[#4CAF50]/5'
+                                                            : 'text-slate-500 hover:bg-slate-50 hover:text-[#4CAF50]'
+                                                            }`}
+                                                      >
+                                                         {room === 'All' ? 'All Rooms' : room}
+                                                      </button>
+                                                   ))}
+                                                </div>
+                                             </>
+                                          )}
+                                       </div>
+                                    </div>
                                  </div>
                               </div>
 
-                              {/* Bottom Row: Room Tags */}
-                              <div className="flex flex-wrap items-center gap-2 p-2 bg-slate-50/50 rounded-xl animate-in fade-in slide-in-from-top-4 duration-500">
-                                 <span className="text-[9px] font-bold text-slate-300 uppercase tracking-widest px-4 py-2">Placement filter:</span>
-                                 {['All', ...data.rooms].map(room => (
-                                    <button
-                                       key={room}
-                                       onClick={() => setActiveRoom(room)}
-                                       className={`px-5 py-2 rounded-full text-[9px] font-bold uppercase tracking-widest transition-all ${activeRoom === room
-                                          ? 'bg-[#4CAF50] text-white shadow-lg shadow-[#4CAF50]/20'
-                                          : 'bg-white text-slate-400 border border-transparent hover:text-[#4CAF50]'
-                                          }`}
-                                    >
-                                       {room}
-                                    </button>
-                                 ))}
-                              </div>
+
 
                            </div>
                         </div>

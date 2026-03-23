@@ -19,11 +19,10 @@ export default function AboutPage() {
       <AboutHero />
       <ScrollReveal><AboutIntro /></ScrollReveal>
       <ScrollReveal><AboutStory /></ScrollReveal>
-      <ScrollReveal><AboutMission /></ScrollReveal>
-      <ScrollReveal><WhyChooseUs /></ScrollReveal>
-      <ScrollReveal><AboutProcess /></ScrollReveal>
-      <ScrollReveal><AboutTeam /></ScrollReveal>
       <ScrollReveal><AboutStats /></ScrollReveal>
+      <ScrollReveal><AboutMission /></ScrollReveal>
+      <ScrollReveal><AboutTeam /></ScrollReveal>
+      <ScrollReveal><AboutProcess /></ScrollReveal>
       <ScrollReveal><QuoteCTA /></ScrollReveal>
       <Footer />
     </main>
