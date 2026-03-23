@@ -34,12 +34,12 @@ const Gallery = () => {
 
   const getBentoClass = (index: number) => {
     switch(index) {
-      case 0: return 'md:col-span-2 md:row-span-2'; // Large 2x2 (left side)
-      case 1: return 'md:col-span-1 md:row-span-1'; // Small 1x1
-      case 2: return 'md:col-span-1 md:row-span-1'; // Small 1x1
-      case 3: return 'md:col-span-1 md:row-span-1'; // Small 1x1
-      case 4: return 'md:col-span-1 md:row-span-1'; // Small 1x1
-      default: return 'md:col-span-1 md:row-span-1';
+      case 0: return 'col-span-2 row-span-2 md:col-span-2 md:row-span-2'; // Large 2x2
+      case 1: return 'col-span-1 row-span-1 md:col-span-1 md:row-span-1'; // Small 1x1
+      case 2: return 'col-span-1 row-span-1 md:col-span-1 md:row-span-1'; // Small 1x1
+      case 3: return 'col-span-1 row-span-1 md:col-span-1 md:row-span-1'; // Small 1x1
+      case 4: return 'col-span-1 row-span-1 md:col-span-1 md:row-span-1'; // Small 1x1
+      default: return 'col-span-1 row-span-1 md:col-span-1 md:row-span-1';
     }
   };
 
@@ -82,7 +82,7 @@ const Gallery = () => {
         </div>
 
         {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-3 md:gap-4 h-auto md:h-[320px] lg:h-[400px]">
+        <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-3 md:gap-4 h-auto md:h-[320px] lg:h-[400px]">
           {displayedItems.map((item: any, index: number) => (
              <Link 
                href={`/gallery`}
