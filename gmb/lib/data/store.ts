@@ -155,7 +155,7 @@ export const PRODUCTS: StoreProduct[] = [
   // ── BLINDS ────────────────────────────────────────────────────────────────────
   {
     id: 'breeze-sunscreen',
-    name: 'Breeze Sunscreen',
+    name: 'See Through',
     tagline: 'Antimicrobial fabric that filters light while preserving your view',
     image: '/images/curtain1.png',
     price: 123,
@@ -168,7 +168,7 @@ export const PRODUCTS: StoreProduct[] = [
   },
   {
     id: 'haven-light-filtering',
-    name: 'Haven Light Filtering',
+    name: 'Light Filtering',
     tagline: 'Linen-look roller blind with colours that match the Haven Blockout range',
     image: '/images/curtain2.png',
     price: 136,
@@ -181,7 +181,7 @@ export const PRODUCTS: StoreProduct[] = [
   },
   {
     id: 'tranquil-blockout',
-    name: 'Tranquil Blockout',
+    name: 'Blockout Roller Blinds',
     tagline: 'Durable blockout with the widest colour range in the collection',
     image: '/images/curtain3.png',
     price: 105,
@@ -192,22 +192,22 @@ export const PRODUCTS: StoreProduct[] = [
     badge: 'Blockout',
     config: { type: 'roller', ...rollerBase },
   },
-  {
-    id: 'seclusion-light-filtering',
-    name: 'Seclusion Light Filtering',
-    tagline: 'Subtle textured weave with a light pattern, matching the Haven Blockout palette',
-    image: '/images/curtain4.png',
-    price: 273,
-    colors: 11,
-    leadTime: 'Ready in 3–4 weeks',
-    category: 'blinds',
-    subCategory: 'Roman Blind',
-    badge: 'Light Filtering',
-    config: { type: 'roman', ...romanBase },
-  },
+  // {
+  //   id: 'seclusion-light-filtering',
+  //   name: 'Light Filtering',
+  //   tagline: 'Subtle textured weave with a light pattern, matching the Haven Blockout palette',
+  //   image: '/images/curtain4.png',
+  //   price: 273,
+  //   colors: 11,
+  //   leadTime: 'Ready in 3–4 weeks',
+  //   category: 'blinds',
+  //   subCategory: 'Roman Blind',
+  //   badge: 'Light Filtering',
+  //   config: { type: 'roman', ...romanBase },
+  // },
   {
     id: 'haven-blockout-roman',
-    name: 'Haven Blockout Roman',
+    name: 'Roman Blinds',
     tagline: 'Premium linen-look Roman blind with full blockout performance',
     image: '/images/curtain5.png',
     price: 325,
@@ -239,7 +239,7 @@ export const PRODUCTS: StoreProduct[] = [
   },
   {
     id: 'ora-blockout-vertical',
-    name: 'Ora Blockout Vertical',
+    name: ' Vertical Blinds',
     tagline: 'Premium textured vertical blind with full blockout for large windows & sliding doors',
     image: '/images/curtain2.png',
     price: 138,
@@ -262,7 +262,7 @@ export const PRODUCTS: StoreProduct[] = [
   // ── CURTAINS ──────────────────────────────────────────────────────────────────
   {
     id: 'catalina-sheer',
-    name: 'Catalina Sheer',
+    name: ' Sheer Curtains',
     tagline: 'Lightweight elegance with a smooth finish that softens natural light beautifully',
     image: '/images/curtain3.png',
     price: 287,
@@ -275,7 +275,7 @@ export const PRODUCTS: StoreProduct[] = [
   },
   {
     id: 'eclipse-blockout',
-    name: 'Eclipse Blockout',
+    name: ' Blockout Curtains',
     tagline: 'Luxurious thick-weave fabric delivering complete darkness and insulation',
     image: '/images/curtain4.png',
     price: 357,
