@@ -155,7 +155,7 @@ export const PRODUCTS: StoreProduct[] = [
   // ── BLINDS ────────────────────────────────────────────────────────────────────
   {
     id: 'breeze-sunscreen',
-    name: 'See Through',
+    name: 'Seethrough',
     tagline: 'Antimicrobial fabric that filters light while preserving your view',
     image: '/images/curtain1.png',
     price: 123,
