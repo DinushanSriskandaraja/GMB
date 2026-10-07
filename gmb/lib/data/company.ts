@@ -4,7 +4,7 @@ export const company = {
   phoneFormatted: "+61 426 598 500",
   whatsapp: "61426598500",
   whatsappLink: "https://wa.me/61426598500",
-  email: "hello@gmbcurtainsandblinds.com",
+  email: "sales@gmbcurtainsandblinds.com.au",
   address: "9B Whitfield Bvd, Cranbourne West VIC 3977, Australia",
   socials: {
     instagram: "https://www.instagram.com/gmbcurtainsandblinds/",

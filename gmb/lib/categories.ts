@@ -49,7 +49,7 @@ export const PRODUCT_CATEGORIES: CategoryGroup[] = [
                 title: "Blinds",
                 slug: "Blinds",
                 description: "Modern and versatile styles for every space.",
-                image: "/images/curtain5.png",
+                image: "/images/curtain3.png",
                 subCategories: [
                     "Roman Blind",
                     "Vertical Blind",
@@ -63,7 +63,7 @@ export const PRODUCT_CATEGORIES: CategoryGroup[] = [
                 title: "Roller Blinds",
                 slug: "RollerBlinds",
                 description: "Elegant and functional roller blinds for complete privacy, UV reduction, or soft diffused glow.",
-                image: "/images/curtain1.png",
+                image: "/images/curtain4.png",
                 subCategories: [
                     "Blockout",
                     "See-Through",
@@ -79,7 +79,7 @@ export const PRODUCT_CATEGORIES: CategoryGroup[] = [
                 title: "Plantation Shutters",
                 slug: "PlantationShutters",
                 description: "Premium wooden aesthetics with timeless appeal.",
-                image: "/images/curtain2.png",
+                image: "/images/curtain5.png",
                 subCategories: [
                     "PVC Shutters",
                     "MDF Shutters",
@@ -98,14 +98,14 @@ export const PRODUCT_CATEGORIES: CategoryGroup[] = [
                 title: "Swags & Tails",
                 slug: "SwagsTails",
                 description: "Classic and luxurious draping valances.",
-                image: "/images/curtain4.png",
+                image: "/images/curtain6.png",
                 subCategories: []
             },
             {
                 title: "Motorised Curtains",
                 slug: "MotorisedCurtains",
                 description: "Fully automated curtains operable via app, remote, or voice.",
-                image: "/images/curtain4.png",
+                image: "/images/curtain7.png",
                 isNew: true,
                 subCategories: [
                     "Wi-Fi Smart Curtains",
@@ -118,7 +118,7 @@ export const PRODUCT_CATEGORIES: CategoryGroup[] = [
                 title: "Smart Sheers",
                 slug: "SmartSheers",
                 description: "Automated light diffusion for effortless ambiance control.",
-                image: "/images/curtain5.png",
+                image: "/images/curtain8.png",
                 isNew: true,
                 subCategories: [
                     "Motorised Sheer",
