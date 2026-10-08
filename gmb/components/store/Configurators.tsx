@@ -144,7 +144,7 @@ export function CurtainCfg({ cfg, base, onCfg, initialStyle }: { cfg: CurtainCon
   const [pos, setPos] = useState<string>(cfg.positions[0]);
   const [stack, setStack] = useState<string>(cfg.stacks[2]);
   
-  const initStyle = (initialStyle && cfg.styles.includes(initialStyle)) ? initialStyle : cfg.styles[0];
+  const initStyle = (initialStyle && (cfg.styles as readonly string[]).includes(initialStyle)) ? initialStyle : cfg.styles[0];
   const [style, setStyle] = useState<string>(initStyle);
   
   const [hem, setHem] = useState<string>(cfg.hems[0]);
@@ -185,7 +185,7 @@ export function DoubleCurtainCfg({ cfg, base, onCfg, initialStyle }: { cfg: Doub
   const [setup, setSetup] = useState<string>(cfg.setups[0]);
   const [stack, setStack] = useState<string>(cfg.stacks[2]);
   
-  const initStyle = (initialStyle && cfg.styles.includes(initialStyle)) ? initialStyle : cfg.styles[0];
+  const initStyle = (initialStyle && (cfg.styles as readonly string[]).includes(initialStyle)) ? initialStyle : cfg.styles[0];
   const [style, setStyle] = useState<string>(initStyle);
   
   const [tColor, setTColor] = useState<string>(cfg.trackColors[0]);
