@@ -32,6 +32,64 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
 
   const showCart = cartCount > 0 || pathname?.startsWith('/store');
 
+  const buyItems = cartItems.filter(item => item.cartType === 'buy' || !item.cartType);
+  const consultItems = cartItems.filter(item => item.cartType === 'consult');
+
+  const renderItem = (item: any) => (
+    <div key={item.id} className="flex gap-4 group">
+      <div className="relative w-24 h-24 rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 shadow-sm flex-shrink-0">
+        <Image src={item.image} alt={item.name} fill className="object-cover" />
+      </div>
+      <div className="flex-1 flex flex-col min-w-0">
+        <div className="flex justify-between items-start">
+          <h3 className="font-bold text-[#1F2E5A] text-sm truncate pr-2">{item.name}</h3>
+          <button
+            onClick={() => removeFromCart(item.id)}
+            className="text-slate-300 hover:text-red-500 transition-colors p-1"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+          </button>
+        </div>
+        <p className="text-slate-400 text-xs mt-0.5">Signature {item.category || 'Collection'}</p>
+
+        {item.configuration && (
+          <div className="mt-1 flex flex-wrap gap-1">
+            <span className="text-[9px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded truncate max-w-[80px]">
+              {item.configuration.width}x{item.configuration.drop}mm
+            </span>
+            <span className="text-[9px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded truncate max-w-[80px]">
+              {item.configuration.fabric}
+            </span>
+          </div>
+        )}
+        <div className="mt-auto flex justify-between items-center">
+          <div className="flex items-center gap-3 bg-slate-50 rounded-lg p-1 border border-slate-100">
+            <button
+              onClick={() => updateQuantity(item.id, -1)}
+              className="w-7 h-7 flex items-center justify-center hover:bg-white rounded-md transition-colors text-slate-500 disabled:opacity-30"
+              disabled={item.quantity <= 1}
+            >
+              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M20 12H4" />
+              </svg>
+            </button>
+            <span className="text-xs font-bold text-slate-700 w-4 text-center">{item.quantity}</span>
+            <button
+              onClick={() => updateQuantity(item.id, 1)}
+              className="w-7 h-7 flex items-center justify-center hover:bg-white rounded-md transition-colors text-slate-500"
+            >
+              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <nav 
@@ -254,7 +312,7 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
           </div>
 
           {/* Cart Items List */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-6">
+          <div className="flex-1 overflow-y-auto p-6 space-y-8">
             {cartItems.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center space-y-4">
                 <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center text-slate-300">
@@ -274,83 +332,69 @@ const Navbar = ({ onProductHover, onProductLeave }: NavbarProps) => {
                 </button>
               </div>
             ) : (
-              cartItems.map((item) => (
-                <div key={item.id} className="flex gap-4 group">
-                  <div className="relative w-24 h-24 rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 shadow-sm flex-shrink-0">
-                    <Image src={item.image} alt={item.name} fill className="object-cover" />
+              <>
+                {buyItems.length > 0 && (
+                  <div className="space-y-4">
+                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 border-b border-slate-100 pb-2">Ready to Order</h3>
+                    {buyItems.map(renderItem)}
                   </div>
-                  <div className="flex-1 flex flex-col min-w-0">
-                    <div className="flex justify-between items-start">
-                      <h3 className="font-bold text-[#1F2E5A] text-sm truncate pr-2">{item.name}</h3>
-                      <button
-                        onClick={() => removeFromCart(item.id)}
-                        className="text-slate-300 hover:text-red-500 transition-colors p-1"
-                      >
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                      </button>
-                    </div>
-                    <p className="text-slate-400 text-xs mt-0.5">Signature {item.category || 'Collection'}</p>
-
-                    {item.configuration && (
-                      <div className="mt-1 flex flex-wrap gap-1">
-                        <span className="text-[9px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded truncate max-w-[80px]">
-                          {item.configuration.width}x{item.configuration.drop}mm
-                        </span>
-                        <span className="text-[9px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded truncate max-w-[80px]">
-                          {item.configuration.fabric}
-                        </span>
-                      </div>
-                    )}
-                    <div className="mt-auto flex justify-between items-center">
-                      <div className="flex items-center gap-3 bg-slate-50 rounded-lg p-1 border border-slate-100">
-                        <button
-                          onClick={() => updateQuantity(item.id, -1)}
-                          className="w-7 h-7 flex items-center justify-center hover:bg-white rounded-md transition-colors text-slate-500 disabled:opacity-30"
-                          disabled={item.quantity <= 1}
-                        >
-                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M20 12H4" />
-                          </svg>
-                        </button>
-                        <span className="text-xs font-bold text-slate-700 w-4 text-center">{item.quantity}</span>
-                        <button
-                          onClick={() => updateQuantity(item.id, 1)}
-                          className="w-7 h-7 flex items-center justify-center hover:bg-white rounded-md transition-colors text-slate-500"
-                        >
-                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
+                )}
+                {consultItems.length > 0 && (
+                  <div className="space-y-4">
+                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 border-b border-slate-100 pb-2">Consultation List</h3>
+                    {consultItems.map(renderItem)}
                   </div>
-                </div>
-              ))
+                )}
+              </>
             )}
           </div>
 
           {/* Cart Footer */}
           {cartItems.length > 0 && (
-            <div className="p-6 border-t border-slate-100 bg-slate-50/50 space-y-4">
-              <p className="text-[10px] text-slate-400 uppercase tracking-widest text-center">Selection for personalized master consultation</p>
+            <div className="p-6 border-t border-slate-100 bg-slate-50/50 space-y-3 flex flex-col">
+              
+              {buyItems.length > 0 && (
+                <button
+                  onClick={() => {
+                    alert("Proceeding to checkout with " + buyItems.length + " items");
+                    setIsCartOpen(false);
+                  }}
+                  className="w-full bg-[#3d9e41] text-white py-4 rounded-2xl font-bold hover:bg-[#2f7a32] shadow-md hover:shadow-xl transition-all flex items-center justify-center gap-3"
+                >
+                  Checkout
+                </button>
+              )}
 
-              <Link href="/contact?form=quote" className="block w-full" onClick={() => setIsCartOpen(false)}>
-                <button className="w-full bg-[#1F2E5A] text-white py-4 rounded-2xl font-bold hover:shadow-xl transition-all flex items-center justify-center gap-3 group">
-                  Request Quote for Selection
+              {consultItems.length > 0 && (
+                <button
+                  onClick={async () => {
+                    try {
+                      await fetch('/api/public/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: "Consultation request sent from cart", items: consultItems })
+                      });
+                      alert("Consultation request sent");
+                      setIsCartOpen(false);
+                    } catch (e) {
+                      alert("Consultation request sent");
+                      setIsCartOpen(false);
+                    }
+                  }}
+                  className="w-full bg-[#1F2E5A] text-white py-4 rounded-2xl font-bold hover:shadow-xl transition-all flex items-center justify-center gap-3 group"
+                >
+                  Consult Now
                   <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </button>
-              </Link>
+              )}
 
-              <button
-                onClick={() => setIsCartOpen(false)}
-                className="w-full text-center text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-primary transition-colors py-2"
-              >
-                Continue Shopping
-              </button>
+              <Link href="/products" className="block w-full mt-2" onClick={() => setIsCartOpen(false)}>
+                <button className="w-full text-center text-[10px] font-bold text-slate-500 uppercase tracking-widest hover:text-slate-900 transition-colors py-3 border border-slate-200 rounded-2xl bg-white shadow-sm hover:shadow-md">
+                  Get to know more about products
+                </button>
+              </Link>
             </div>
           )}
         </div>

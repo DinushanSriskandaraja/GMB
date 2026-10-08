@@ -120,26 +120,40 @@ const GalleryLightbox = ({
               </div>
             </div>
 
-            <button
-              onClick={() => onSave(item)}
-              className={`w-full py-4 rounded-2xl font-bold text-[10px] uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3 ${
-                isSaved
-                  ? 'bg-slate-100 text-[#1F2E5A] cursor-default'
-                  : 'bg-[#1F2E5A] text-white hover:bg-slate-900 shadow-xl'
-              }`}
-            >
-              {isSaved ? (
-                <>
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" /></svg>
-                  Saved to Selection
-                </>
-              ) : (
-                <>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" /></svg>
-                  Save to Selection
-                </>
-              )}
-            </button>
+            <div className="flex gap-3 w-full">
+              <button
+                onClick={() => onSave(item)}
+                className="flex-1 py-4 rounded-2xl font-bold text-[10px] uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2 bg-[#1F2E5A] text-white hover:bg-slate-900 shadow-xl"
+              >
+                Consult Now
+              </button>
+              
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  let matchSlug = 'tranquil-blockout'; // default
+                  let styleQuery = '';
+                  const cat = (item.category || item.style || '').toLowerCase();
+                  
+                  if (cat.includes('sheer')) matchSlug = 'catalina-sheer';
+                  else if (cat.includes('curtain') || cat.includes('drape')) matchSlug = 'eclipse-blockout';
+                  else if (cat.includes('blind')) matchSlug = 'tranquil-blockout';
+
+                  if (cat.includes('s-fold') || cat.includes('s fold') || cat.includes('wave fold')) {
+                    styleQuery = '?style=S%20Fold';
+                  } else if (cat.includes('pinch')) {
+                    styleQuery = '?style=Triple%20Pinch%20Pleat';
+                  } else if (cat.includes('pencil') || cat.includes('pocket')) {
+                    styleQuery = '?style=Pencil%20Pleat';
+                  }
+
+                  window.location.href = `/store/${matchSlug}${styleQuery}`;
+                }}
+                className="flex-1 py-4 rounded-2xl font-bold text-[10px] uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2 bg-[#3d9e41] text-white hover:bg-[#2f7a32] shadow-xl"
+              >
+                Buy Now
+              </button>
+            </div>
           </div>
         </motion.div>
       </motion.div>

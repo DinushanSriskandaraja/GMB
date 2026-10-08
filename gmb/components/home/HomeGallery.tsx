@@ -65,7 +65,8 @@ export default function HomeGallery() {
       name: item.title,
       price: 0,
       image: item.image,
-      category: item.category || 'Portfolio'
+      category: item.category || 'Portfolio',
+      cartType: 'consult'
     });
   };
 

@@ -31,7 +31,56 @@
       "mobile": "0987654321"
     }
   ],
-  "contacts": [],
+  "contacts": [
+    {
+      "message": "Consultation request sent from cart",
+      "items": [
+        {
+          "id": "g2",
+          "name": "Cozy Wave Fold Wrap",
+          "price": 0,
+          "image": "/images/curtain2.png",
+          "category": "Wave Fold Curtain",
+          "quantity": 1
+        },
+        {
+          "id": "g1",
+          "name": "Modern Wave Fold Elegance",
+          "price": 0,
+          "image": "/images/curtain1.png",
+          "category": "Wave Fold Curtain",
+          "quantity": 1
+        }
+      ],
+      "id": "1791430071088",
+      "date": "2026-10-08"
+    },
+    {
+      "message": "Consultation request sent from cart",
+      "items": [
+        {
+          "id": "g2",
+          "name": "Cozy Wave Fold Wrap",
+          "price": 0,
+          "image": "/images/curtain2.png",
+          "category": "Wave Fold Curtain",
+          "cartType": "consult",
+          "quantity": 1
+        },
+        {
+          "id": "g1",
+          "name": "Modern Wave Fold Elegance",
+          "price": 0,
+          "image": "/images/curtain1.png",
+          "category": "Wave Fold Curtain",
+          "cartType": "consult",
+          "quantity": 1
+        }
+      ],
+      "id": "1791430798792",
+      "date": "2026-10-08"
+    }
+  ],
   "gallery": [
     {
       "id": "s24",

@@ -11,6 +11,7 @@ export interface CartItem {
   category?: string;
   style?: string;
   configuration?: Record<string, any>;
+  cartType?: 'buy' | 'consult';
 }
 
 interface CartContextType {

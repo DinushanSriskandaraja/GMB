@@ -38,11 +38,11 @@ const GalleryCard = ({ item, index, isSaved, onSelect, onSave }: GalleryCardProp
           className="object-cover transition-transform duration-700 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
-        
+
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
           <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-            <h3 className="text-white text-lg font-medium tracking-tight mb-2">{item.title}</h3>
+            <h3 className="text-white !text-white group-hover:text-white text-lg font-medium tracking-tight mb-2 drop-shadow-md">{item.title}</h3>
             <div className="flex flex-wrap gap-2">
               <span className="text-[9px] font-bold bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-full uppercase tracking-widest">
                 {item.location || item.room || 'Gallery'}
@@ -54,20 +54,44 @@ const GalleryCard = ({ item, index, isSaved, onSelect, onSave }: GalleryCardProp
           </div>
         </div>
 
-        {/* Save Button */}
-        <button
-          onClick={onSave}
-          className={`absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md transition-all duration-300 transform ${
-            isSaved 
-              ? 'bg-[#1F2E5A] text-white' 
-              : 'bg-white/80 text-slate-900 border border-white/50 hover:bg-[#1F2E5A] hover:text-white opacity-0 group-hover:opacity-100'
-          }`}
-          title={isSaved ? "Saved to Selection" : "Save to Selection"}
-        >
-          <svg className="w-4 h-4" fill={isSaved ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-          </svg>
-        </button>
+        {/* Actions */}
+        <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <button
+            onClick={onSave}
+            className={`px-3 py-1.5 rounded-full backdrop-blur-md font-bold text-[9px] uppercase tracking-wider transition-colors shadow-sm ${isSaved
+                ? 'bg-slate-100/90 text-[#1F2E5A] cursor-default'
+                : 'bg-white/90 text-[#1F2E5A] hover:bg-[#1F2E5A] hover:text-white'
+              }`}
+          >
+            Consult
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              let matchSlug = 'tranquil-blockout'; // default
+              let styleQuery = '';
+              const cat = (item.category || item.style || '').toLowerCase();
+
+              if (cat.includes('sheer')) matchSlug = 'catalina-sheer';
+              else if (cat.includes('curtain') || cat.includes('drape')) matchSlug = 'eclipse-blockout';
+              else if (cat.includes('blind')) matchSlug = 'tranquil-blockout';
+
+              if (cat.includes('s-fold') || cat.includes('s fold') || cat.includes('wave fold')) {
+                styleQuery = '?style=S%20Fold';
+              } else if (cat.includes('pinch')) {
+                styleQuery = '?style=Triple%20Pinch%20Pleat';
+              } else if (cat.includes('pencil') || cat.includes('pocket')) {
+                styleQuery = '?style=Pencil%20Pleat';
+              }
+
+              window.location.href = `/store/${matchSlug}${styleQuery}`;
+            }}
+            className="px-3 py-1.5 rounded-full bg-[#3d9e41] text-white font-bold text-[9px] uppercase tracking-wider hover:bg-[#2f7a32] transition-colors shadow-sm"
+          >
+            Buy Now
+          </button>
+        </div>
       </div>
     </motion.div>
   );

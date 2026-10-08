@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useCart } from '@/context/CartContext';
 import {
@@ -29,7 +29,9 @@ import {
 // ─── Page ──────────────────────────────────────────────────────────────────────
 export default function StoreProductPage() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const slug = typeof params?.slug === 'string' ? params.slug : '';
+  const initialStyle = searchParams?.get('style');
   const router = useRouter();
   const { addToCart } = useCart();
 
@@ -65,6 +67,7 @@ export default function StoreProductPage() {
         price,
         image: product.image,
         category: product.subCategory.toUpperCase(),
+        cartType: 'buy',
         configuration: {
           ...currentCfg,
           roomName: roomName || 'Not specified',
@@ -114,8 +117,8 @@ export default function StoreProductPage() {
             {config.type === 'roman'          && <RomanCfg        cfg={config as RomanBlindConfig}     base={product.price} onCfg={handleCfg} />}
             {config.type === 'vertical'       && <VerticalCfg     cfg={config as VerticalBlindConfig}  base={product.price} onCfg={handleCfg} />}
             {config.type === 'double-blind'   && <DoubleBlindCfg  cfg={config as DoubleBlindConfig}    base={product.price} onCfg={handleCfg} />}
-            {config.type === 'curtain'        && <CurtainCfg      cfg={config as CurtainConfig}        base={product.price} onCfg={handleCfg} />}
-            {config.type === 'double-curtain' && <DoubleCurtainCfg cfg={config as DoubleCurtainConfig} base={product.price} onCfg={handleCfg} />}
+            {config.type === 'curtain'        && <CurtainCfg      cfg={config as CurtainConfig}        base={product.price} onCfg={handleCfg} initialStyle={initialStyle} />}
+            {config.type === 'double-curtain' && <DoubleCurtainCfg cfg={config as DoubleCurtainConfig} base={product.price} onCfg={handleCfg} initialStyle={initialStyle} />}
           </motion.div>
 
           {/* RIGHT — Sticky summary panel */}

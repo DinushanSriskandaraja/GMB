@@ -138,12 +138,15 @@ export function DoubleBlindCfg({ cfg, base, onCfg }: { cfg: DoubleBlindConfig; b
 }
 
 // ─── Curtain ──────────────────────────────────────────────────────────────────
-export function CurtainCfg({ cfg, base, onCfg }: { cfg: CurtainConfig; base: number; onCfg: CfgCallback }) {
+export function CurtainCfg({ cfg, base, onCfg, initialStyle }: { cfg: CurtainConfig; base: number; onCfg: CfgCallback; initialStyle?: string | null }) {
   const { w, setW, d, setD, tier, setTier, color, setColor } = useMeasureFabric();
   const [fit, setFit] = useState<string>(cfg.fitTypes[0]);
   const [pos, setPos] = useState<string>(cfg.positions[0]);
   const [stack, setStack] = useState<string>(cfg.stacks[2]);
-  const [style, setStyle] = useState<string>(cfg.styles[0]);
+  
+  const initStyle = (initialStyle && cfg.styles.includes(initialStyle)) ? initialStyle : cfg.styles[0];
+  const [style, setStyle] = useState<string>(initStyle);
+  
   const [hem, setHem] = useState<string>(cfg.hems[0]);
   const [track, setTrack] = useState<string>(cfg.trackTypes[0]);
   const [wand, setWand] = useState<string>(cfg.wandLengths[0]);
@@ -177,11 +180,14 @@ export function CurtainCfg({ cfg, base, onCfg }: { cfg: CurtainConfig; base: num
 }
 
 // ─── Double Curtain ───────────────────────────────────────────────────────────
-export function DoubleCurtainCfg({ cfg, base, onCfg }: { cfg: DoubleCurtainConfig; base: number; onCfg: CfgCallback }) {
+export function DoubleCurtainCfg({ cfg, base, onCfg, initialStyle }: { cfg: DoubleCurtainConfig; base: number; onCfg: CfgCallback; initialStyle?: string | null }) {
   const { w, setW, d, setD, tier, setTier, color, setColor } = useMeasureFabric();
   const [setup, setSetup] = useState<string>(cfg.setups[0]);
   const [stack, setStack] = useState<string>(cfg.stacks[2]);
-  const [style, setStyle] = useState<string>(cfg.styles[0]);
+  
+  const initStyle = (initialStyle && cfg.styles.includes(initialStyle)) ? initialStyle : cfg.styles[0];
+  const [style, setStyle] = useState<string>(initStyle);
+  
   const [tColor, setTColor] = useState<string>(cfg.trackColors[0]);
 
   const valid = w !== '' && d !== ''
